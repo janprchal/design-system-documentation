@@ -1,0 +1,91 @@
+$hamburger: (
+  "text-c": $light-c,
+  "slice-bg-c": $dark-c,
+  "slice-h": 0.2rem,
+);
+
+.c-hamburger {
+  @include mappy-query(screen) {
+    display: none;
+  }
+  position: relative;
+
+  width: 2.7rem;
+  height: 2rem;
+  margin-left: 0;
+
+  color: map-get($hamburger, "text-c");
+  font-weight: 700;
+  line-height: 3.6rem;
+  text-align: right;
+
+  transition: all 0.24s linear;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.c-hamburger.is-open {
+  border-radius: map-get($hamburger, "slice-h") map-get($hamburger, "slice-h") 0
+    0;
+
+  color: map-get($hamburger, "text-c");
+}
+
+.c-hamburger__slice {
+  position: absolute;
+  top: 50%;
+  display: block;
+
+  width: 100%;
+  height: map-get($hamburger, "slice-h");
+  margin-top: -#{map-get($hamburger, "slice-h")};
+
+  background-color: map-get($hamburger, "slice-bg-c");
+  border-radius: map-get($hamburger, "slice-h");
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.c-hamburger__slice:before,
+.c-hamburger__slice:after {
+  content: "";
+  position: absolute;
+  display: block;
+
+  width: 100%;
+  height: map-get($hamburger, "slice-h");
+
+  background-color: map-get($hamburger, "slice-bg-c");
+  border-radius: map-get($hamburger, "slice-h");
+
+  transition: all 0.24s linear;
+}
+
+.c-hamburger__slice:before {
+  top: -0.8rem;
+}
+
+.c-hamburger__slice:after {
+  top: 0.8rem;
+}
+
+.is-open .c-hamburger__slice:before,
+.is-open .c-hamburger__slice:after {
+  top: 0;
+}
+
+.is-open .c-hamburger__slice {
+  background-color: transparent;
+}
+
+.is-open .c-hamburger__slice:before {
+  transform: rotate(45deg);
+}
+
+.is-open .c-hamburger__slice:after {
+  transform: rotate(-45deg);
+}

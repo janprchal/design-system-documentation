@@ -1,0 +1,41 @@
+@use "sass:math";
+
+// Creates media-query for all breakpoints
+@mixin create-mq($breakpoint) {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @include mappy-query($breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+  @include create-mq($breakpoint) {
+    @for $i from 1 through $grid-cols {
+      .o-col-#{$i} {
+        flex-basis: math.div(100, math.div($grid-cols, $i)) * 1%;
+
+        max-width: math.div(100, math.div($grid-cols, $i)) * 1%;
+      }
+
+      .o-col#{$modifier}-#{$i} {
+        flex-basis: math.div(100, math.div($grid-cols, $i)) * 1%;
+
+        max-width: math.div(100, math.div($grid-cols, $i)) * 1%;
+      }
+
+      .o-col#{$modifier}-offset-#{$i} {
+        margin-left: math.div(100, math.div($grid-cols, $i)) * 1%;
+      }
+    }
+    .o-col#{$modifier}-offset-0 {
+      margin-left: 0;
+    }
+  }
+}
+
+@each $modifier, $breakpoint in $grid-map {
+  @include create-col-classes($modifier, $grid-cols, $breakpoint);
+}

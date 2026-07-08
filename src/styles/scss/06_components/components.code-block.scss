@@ -1,0 +1,36 @@
+$code: (
+  "bg-c": $neutral-c,
+  "border-r": $border-r--bigger,
+  "text-c": $text-c,
+  
+  "button-gap-x": $space-md,
+  "button-gap-y": $space-nm,
+);
+
+.c-code {
+  display: flex;
+  flex-flow: column;
+
+  // @include mappy-query(largescreen) {
+  //   height: 100%;
+  // }
+}
+
+.c-code__code {
+  // flex: 1;
+  position: relative;
+  
+  padding: 0 $space-nm 0;
+
+  background-color: map-get($code, "bg-c"); 
+  border-radius: map-get($code, "border-r");
+  color: map-get($code, "text-c");
+}
+
+.c-code__button {
+  position: absolute;
+  z-index: 10;
+
+  top: map-get($code, "button-gap-y");
+  right: map-get($code, "button-gap-x");
+}

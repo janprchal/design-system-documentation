@@ -1,0 +1,24 @@
+$sample: (
+  "border-r": $border-r,
+  "text-s": $text-sm,
+);
+
+.c-color-sample {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 50px;
+
+  padding-right: $space-nm;
+  padding-left: $space-nm;
+
+  font-size: map-get($sample, "text-s");
+  font-weight: 600;
+  
+  border-radius: map-get($sample, "border-r");
+  border: 1px solid $outline-c;
+}
+
+.c-color-sample--table {
+}

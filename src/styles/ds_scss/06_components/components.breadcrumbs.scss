@@ -1,0 +1,41 @@
+$breadcrumbs: (
+  "gap": $space-md,
+
+  "text-s": $text-sm,
+  "text-c": $text-c--light,
+);
+
+.c-breadcrumbs {
+  display: flex;
+  overflow: hidden;
+}
+
+.c-breadcrumbs__item {
+  padding-right: map-get($breadcrumbs, "gap");
+  padding-left: map-get($breadcrumbs, "gap");
+
+  font-weight: 600;
+  font-size: map-get($breadcrumbs, "text-s");
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:after {
+    content: "/";
+    position: relative;
+    left: calc(#{map-get($breadcrumbs, "gap")} - 0.2rem);
+
+    color: map-get($breadcrumbs, "text-c");
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+// .c-breadcrumbs__link {}

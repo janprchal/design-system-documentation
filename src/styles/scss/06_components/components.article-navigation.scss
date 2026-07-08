@@ -1,0 +1,78 @@
+$article-nav: (
+  "side-max-w": $article-nav-max-w,
+  "side-w": $article-nav-w,
+
+  "link-p": $space-xxs $space-nm $space-xxs $space-sm,
+  "link-ts": $text-nm,
+  "item-number-bg": $neutral-c,
+
+  "bg-c": $neutral-c,
+  "border-c": $neutral-c--darker,
+  "border-r": $border-r,
+  
+  "space-xxs": $space-xxs,
+  "space-sm": $space-sm,
+  "space-nm": $space-nm,
+  "space-lg": $space-lg,
+  "space-xl": $space-xl,
+);
+
+.c-article-nav {
+  position: fixed;
+  top: auto;
+  left: auto;
+
+  width: map-get($article-nav, "side-w");
+  max-width: map-get($article-nav, "side-max-w");
+}
+
+.c-article-nav__list {
+  width: calc(#{map-get($article-nav, "side-w")} - 2 * #{$space-lg});
+  max-width: calc(#{map-get($article-nav, "side-max-w")} - 2 * #{$space-lg});
+  
+  margin: map-get($article-nav, "space-xl") auto;
+
+  list-style-position: inside;
+
+  font-size: map-get($article-nav, "link-ts");
+}
+
+.c-article-nav__item {
+  margin-bottom: map-get($article-nav, "space-sm");
+}
+
+.c-article-nav__link {
+  position: relative;
+  top: -1px;
+
+  display: inline-block;
+  max-width: calc(100% - 29px);
+  padding: map-get($article-nav, "link-p");
+
+  border-width: 1px 1px 1px 0;
+  border-style: solid;
+  border-color: map-get($article-nav, "border-c");
+  border-radius: 0 map-get($article-nav, "border-r") map-get($article-nav, "border-r") 0;
+
+  font-size: map-get($article-nav, "link-ts");
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+    top: -1px;
+    left: -26px;
+
+    display: block;
+    width: calc(28px + 1px);
+    height: calc(100% + 2px);
+
+    background-color: map-get($article-nav, "item-number-bg");
+
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: map-get($article-nav, "border-c");
+    border-radius: map-get($article-nav, "border-r") 0 0 map-get($article-nav, "border-r");
+  }
+}

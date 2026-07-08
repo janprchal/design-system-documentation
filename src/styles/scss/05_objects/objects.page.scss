@@ -1,0 +1,60 @@
+$page: (
+  "side-max-w": $article-nav-max-w,
+  "side-w": $article-nav-w,
+);
+
+.o-page {
+  min-height: 100vh;
+}
+
+.o-page__heading {
+  height: $header-h;
+  display: flex;
+  align-items: center;
+
+  padding-right: $wrapper-padding-x--lg;
+  padding-left: $wrapper-padding-x--lg;
+
+  border-bottom: 2px solid $outline-c;
+}
+
+.o-page__wrapper {
+  display: flex;
+}
+
+.o-page__section {
+  width: 100%;
+  position: relative;
+
+  padding: $space-xl $wrapper-padding-x--lg $space-xl;
+  border-bottom: 2px solid $outline-c;
+
+  &:nth-child(even) {
+    background-color: #fbfbfb;
+  }
+}
+
+.o-page__content {
+  flex: 1 1 auto;
+}
+
+.o-page__inner {
+  max-width: 94rem;
+}
+
+.o-page__header {
+  margin-bottom: 2rem;
+}
+
+.o-page__side {
+  position: relative;
+
+  flex: 1 0 map-get($page, "side-w");
+  max-width: map-get($page, "side-max-w");
+
+  border-left: 2px solid $outline-c;
+}
+
+.o-page__side--last {
+  border-bottom: 2px solid $outline-c;
+}

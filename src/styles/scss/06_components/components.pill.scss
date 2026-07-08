@@ -1,0 +1,193 @@
+$pill: (
+  "width": 4rem,
+  "padding": $space-xs,
+  "bg-c": $secondary-c--lighter,
+  "bg-c-hover": $secondary-c--darker,
+
+  "border-r": $border-r,
+  "border-c": $secondary-c--darker,
+
+  "text-s": $text-nm,
+  "text-c": $text-c--darker,
+  "text-c-selection": $text-c,
+  "bg-c-selection": #ffee00,
+
+  "name-gap": $space-xxs,
+  "close-px": $space-sm,
+  "close-c": darken($secondary-c--darker, 7%),
+  "close-s": $text-xs,
+  "close-py": $space-xs,
+);
+
+$pill-neutral: (
+  "bg-c": $neutral-c,
+  "border-c": $neutral-c--darker,
+  "text-c": $text-c,
+  "close-border-c": $neutral-c--darker,
+  "close-text-c": $text-c--lighter,
+  "close-bg-c-hover": $neutral-c--darker,
+  "close-text-c-hover": $text-c,
+);
+
+$pill-positive: (
+  "bg-c": #afdd7b,
+  "border-c": $positive-c--darker,
+  "close-border-c": $positive-c--darker,
+  "close-text-c": $positive-c--darker,
+  "close-bg-c-hover": $positive-c--darker,
+  "close-text-c-hover": $light-c,
+);
+
+$pill-negative: (
+  "bg-c": #ff8673,
+  "border-c": $negative-c--darker,
+  "close-border-c": $negative-c--darker,
+  "close-text-c": $negative-c--darker,
+  "close-bg-c-hover": $negative-c--darker,
+  "close-text-c-hover": $light-c,
+);
+
+.c-pill {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: map-get($pill, "width");
+  padding: map-get($pill, "padding");
+
+  background-color: map-get($pill, "bg-c");
+  border: 0.1rem solid map-get($pill, "border-c");
+  border-radius: map-get($pill, "border-r");
+
+  color: map-get($pill, "text-c");
+  font-size: map-get($pill, "text-s");
+  font-weight: 500;
+  line-height: 1;
+}
+
+.c-pill__name::selection,
+.c-pill__content::selection {
+  background: map-get($pill, "bg-c-selection");
+
+  color: map-get($pill, "text-c-selection");
+}
+
+.c-pill__name {
+  margin-right: map-get($pill, "name-gap");
+  padding-left: map-get($pill, "padding");
+
+  font-weight: 500;
+  font-size: map-get($pill, "text-s");
+}
+
+.c-pill__content {
+  padding-right: map-get($pill, "padding");
+}
+
+.c-pill__close {
+  display: flex;
+  align-items: center;
+
+  padding: 0 map-get($pill, "close-px");
+
+  border-left: 0.1rem solid map-get($pill, "border-c");
+
+  color: map-get($pill, "close-c");
+  font-weight: 400;
+  font-size: map-get($pill, "close-s");
+
+  cursor: pointer;
+
+  transition: background-color 0.3s linear;
+
+  &:hover {
+    background-color: map-get($pill, "bg-c-hover");
+
+    color: map-get($pill, "text-c");
+  }
+}
+
+.c-pill__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+
+  margin-top: -0.2rem;
+
+  margin-right: 1rem;
+
+  svg {
+    fill: $dark-c;
+  }
+}
+
+.c-pill--closable {
+  padding: 0;
+
+  .c-pill__close {
+    padding-top: map-get($pill, "close-py");
+    padding-bottom: map-get($pill, "close-py");
+  }
+}
+
+.c-pill--neutral {
+  background-color: map-get($pill-neutral, "bg-c");
+  border-color: map-get($pill-neutral, "border-c");
+
+  color: map-get($pill-neutral, "text-c");
+
+  .c-pill__close {
+    border-color: map-get($pill-neutral, "close-border-c");
+
+    color: map-get($pill-neutral, "close-text-c");
+
+    &:hover {
+      background-color: map-get($pill-neutral, "close-bg-c-hover");
+
+      color: map-get($pill-neutral, "close-text-c-hover");
+    }
+  }
+}
+
+.c-pill--positive {
+  background-color: map-get($pill-positive, "bg-c");
+  border-color: map-get($pill-positive, "border-c");
+
+  .c-pill__close {
+    border-color: map-get($pill-positive, "close-border-c");
+
+    color: map-get($pill-positive, "close-text-c");
+
+    &:hover {
+      background-color: map-get($pill-positive, "close-bg-c-hover");
+
+      color: map-get($pill-positive, "close-text-c-hover");
+    }
+  }
+
+  .c-pill__icon {
+    margin-top: 0.0rem;
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+    
+}
+
+.c-pill--negative {
+  background-color: map-get($pill-negative, "bg-c");
+  border-color: map-get($pill-negative, "border-c");
+
+  .c-pill__close {
+    border-color: map-get($pill-negative, "close-border-c");
+
+    color: map-get($pill-negative, "close-text-c");
+
+    &:hover {
+      background-color: map-get($pill-negative, "close-bg-c-hover");
+
+      color: map-get($pill-negative, "close-text-c-hover");
+    }
+  }
+}

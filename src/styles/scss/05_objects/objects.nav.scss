@@ -1,0 +1,71 @@
+.o-nav {
+  position: fixed;
+  z-index: $nav-block-z;
+  top: $header-h--mobile;
+  left: 0;
+
+  width: 100%;
+  height: calc(100% - #{$header-h--mobile});
+
+  overflow: auto;
+
+  transform: translateX(-100%);
+  transition: transform 0.24s linear;
+
+  @include mappy-query(screen) {
+    display: none;
+
+    overflow: visible;
+  }
+}
+
+.o-nav.is-open {
+  transform: translateX(0);
+}
+
+.o-nav__logo {
+  display: none;
+}
+
+.o-nav__list {
+  @include mappy-query(screen) {
+    height: calc(100% - #{$header-h});
+
+    overflow-y: auto;
+  }
+}
+
+.fluid-layout {
+  .o-nav {
+    height: calc(100% - #{$header-h--mobile});
+
+    @include mappy-query(screen) {
+      display: block;
+      top: 0;
+
+      width: $nav-max-w;
+      min-height: 100%;
+
+      transform: translateX(0);
+
+      border-right: 2px solid $outline-c;
+
+      // box-shadow: 4px 8px 8px rgba(00, 00, 00, .1);
+    }
+  }
+
+  .o-nav__logo {
+    @include mappy-query(screen) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.fluid-layout.nav-collapsed {
+  .o-nav {
+    @include mappy-query(screen) {
+      width: $nav-max-w--collapsed;
+    }
+  }
+}

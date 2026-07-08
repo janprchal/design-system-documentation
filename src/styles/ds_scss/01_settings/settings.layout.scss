@@ -1,0 +1,36 @@
+//-------------------------------//
+//             LAYOUT            //
+//-------------------------------//
+// Global grid settings for 05_objects/objects.flex-grid.scss
+
+$wrapper-padding-x--sm: 1.6rem;
+$wrapper-padding-x--md: 3.2rem;
+$wrapper-padding-x--lg: 4rem;
+
+$grid-cols: 12;
+
+$col-padding-x--sm: 1rem; //10px
+$col-padding-x--md: 1.4rem; //14px
+$col-padding-x--lg: 1.6rem; //16px
+$col-padding-x--xl: 2rem; //20px
+
+$col-width: 9rem; // 90px
+
+// Wrapper - Width based on cols & gaps width
+$wrapper-max-w--screen: calc(
+  (12 * #{$col-width}) + (2 * #{$wrapper-padding-x--lg})
+);
+$wrapper-max-w--largescreen: calc(
+  12 * #{$col-width} + (2 * #{$wrapper-padding-x--lg})
+);
+
+// Header
+$header-h: 9rem;
+$header-h--mobile: 8rem;
+
+// Left side navigation
+$nav-max-w: 30rem;
+$nav-max-w--collapsed: 8rem;
+
+// Wraper - Fluid
+$wrapper-w: calc(100% - #{$nav-max-w});

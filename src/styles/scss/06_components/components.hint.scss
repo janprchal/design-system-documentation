@@ -1,0 +1,110 @@
+$hint: (
+  "padding": $space-nm $space-md,
+  
+  "border-r": $border-r,
+  "border-c": $outline-c,
+  
+  "icon-c": $text-c--light,
+  "icon-s": 2.4rem,
+  "icon-mr": $space-nm,
+
+  "bg-c": $light-c,
+  "text-c": $text-c,
+  "text-s": $text-nm,
+);
+
+$hint-green: (
+  "bg-c": #e5f0e3,
+  "border-c": #BADBB5,
+  "icon-c": #1A4214,
+);
+
+$hint-purple: (
+  "bg-c": #EFE2F1,
+  "border-c": #e4d2e7,
+  "icon-c": #4E2454,
+);
+
+$hint-warning: (
+  "bg-c": #FEF5D0,
+  "border-c": #F9EEC5,
+  "icon-c": #BDA029,
+);
+
+$hint-alert: (
+  "bg-c": #FEE0DF,
+  "border-c": #FDD9D8,
+  "icon-c": #D36460,
+);
+
+.c-hint {
+  display: flex;
+
+  padding: map-get($hint, "padding");
+
+  border-radius: map-get($hint, "border-r");
+  border: 1px solid map-get($hint, "border-c");
+
+  background-color: map-get($hint, "bg-c");
+  box-shadow: 0 0 7px 0px rgba(0,0,0, 0.05);
+
+  // line-height: 1.5;
+
+  // font-weight: 300;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.c-hint__icon {
+  flex: 0 0 map-get($hint, "icon-s");
+  position: relative;
+  top: 3px;
+  
+  // width: 4rem;
+  // height: 4rem;
+
+  margin-right: map-get($hint, "icon-mr");
+
+  fill: map-get($hint, "icon-c");
+}
+
+.c-hint--green {
+  background-color: map-get($hint-green, "bg-c");
+  border-color: map-get($hint-green, "border-c");
+
+  .c-hint__icon {
+    fill: map-get($hint-green, "icon-c");
+  }
+
+  .c-hint__text {
+    color: map-get($hint-green, "text-c");;
+  }
+}
+
+.c-hint--purple {
+  background-color: map-get($hint-purple, "bg-c");
+  border-color: map-get($hint-purple, "border-c");
+
+  .c-hint__icon {
+    fill: map-get($hint-purple, "icon-c");
+  }
+}
+
+.c-hint--warning {
+  background-color: map-get($hint-warning, "bg-c");
+  border-color: map-get($hint-warning, "border-c");
+
+  .c-hint__icon {
+    fill: map-get($hint-warning, "icon-c");
+  }
+}
+
+.c-hint--alert {
+  background-color: map-get($hint-alert, "bg-c");
+  border-color: map-get($hint-alert, "border-c");
+
+  .c-hint__icon {
+    fill: map-get($hint-alert, "icon-c");
+  }
+}

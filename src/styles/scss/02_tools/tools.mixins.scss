@@ -1,0 +1,203 @@
+@use "sass:math";
+
+// =============================================================================
+// String Replace function
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+// =============================================================================
+// Font Face
+// Upload font
+// =============================================================================
+
+@mixin font-face(
+  $name,
+  $path,
+  $weight: null,
+  $style: null,
+  $exts: eot woff2 woff ttf svg
+) {
+  $src: null;
+
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_"),
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype",
+  );
+
+  @each $ext in $exts {
+    $extmod: if(
+      map-has-key($extmods, $ext),
+      $ext + map-get($extmods, $ext),
+      $ext
+    );
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append(
+      $src,
+      url(quote($path + "." + $extmod)) format(quote($format)),
+      comma
+    );
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    unicode-range: U+000-5FF;
+    src: local("Custom Font");
+    src: $src;
+  }
+}
+
+// =============================================================================
+// Pridava stylovani pro ::placeholder pseudoelement
+// =============================================================================
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root("::-webkit-input-placeholder") {
+    @content;
+  }
+
+  @include optional-at-root(":-moz-placeholder") {
+    @content;
+  }
+
+  @include optional-at-root("::-moz-placeholder") {
+    @content;
+  }
+
+  @include optional-at-root(":-ms-input-placeholder") {
+    @content;
+  }
+}
+
+// =============================================================================
+// Wrapper
+// jendoduchy container pro obsah
+// =============================================================================
+@mixin wrapper() {
+  padding-right: $wrapper-padding-x--sm;
+  padding-left: $wrapper-padding-x--sm;
+
+  @include mappy-query(tablet) {
+    padding-right: $wrapper-padding-x--md;
+    padding-left: $wrapper-padding-x--md;
+  }
+
+  @include mappy-query(screen) {
+    max-width: $wrapper-max-w--screen;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    padding-right: $wrapper-padding-x--lg;
+    padding-left: $wrapper-padding-x--lg;
+  }
+
+  @include mappy-query(largescreen) {
+    max-width: $wrapper-max-w--largescreen;
+
+    padding-right: $wrapper-padding-x--lg;
+    padding-left: $wrapper-padding-x--lg;
+  }
+}
+
+// =============================================================================
+// Screen reader only
+// schova obsah (text), tak aby byl viditelny
+// jen pro ctecky a crawlery
+// pouzit ve tride .sr-only
+// =============================================================================
+@mixin sr-only() {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// =============================================================================
+// Responsive image
+// prida zakladni responsivni chovani tagu <img />
+// pouzit v tride .r-img
+// =============================================================================
+@mixin responsive-img() {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// =============================================================================
+// Creating columns through function
+// this allows user to create column layout inside components and objects
+// without putting layout logic into html layout
+// =============================================================================
+@mixin cols($cols) {
+  flex-basis: (math.div(100, $grid-cols) * $cols) * 1%;
+  max-width: (math.div(100, $grid-cols) * $cols) * 1%;
+  width: (math.div(100, $grid-cols) * $cols) * 1%;
+}
+
+@mixin md-cols($cols) {
+  @include mappy-query(tablet) {
+    flex-basis: (math.div(100, $grid-cols) * $cols) * 1%;
+    max-width: (math.div(100, $grid-cols) * $cols) * 1%;
+    width: (math.div(100, $grid-cols) * $cols) * 1%;
+  }
+}
+
+@mixin lg-cols($cols) {
+  @include mappy-query(screen) {
+    flex-basis: (math.div(100, $grid-cols) * $cols) * 1%;
+    max-width: (math.div(100, $grid-cols) * $cols) * 1%;
+    width: (math.div(100, $grid-cols) * $cols) * 1%;
+  }
+}
+
+@mixin xl-cols($cols) {
+  @include mappy-query(largescreen) {
+    flex-basis: (math.div(100, $grid-cols) * $cols) * 1%;
+    max-width: (math.div(100, $grid-cols) * $cols) * 1%;
+    width: (math.div(100, $grid-cols) * $cols) * 1%;
+  }
+}
+
+// =============================================================================
+// Prevents highlighting text on tap / click
+// usefull for switch labels etc.
+// =============================================================================
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}

@@ -1,0 +1,116 @@
+$subnav: (
+  "bg-c": $light-c,
+  "icon-w": 36px,
+
+  "list-bg-c": $block-bg-c,
+  "list-border-r": $border-r--bigger,
+  "list-border-l-c": #DDDDDD,
+
+  "link-padding": $space-md $space-md,
+  "link-c": $nav-link-c,
+  "link-c-hover": $nav-link-c--hover,
+  "link-bg-c-hover": $outline-c,
+  "link-c-active": $light-c,
+  "link-bg-c-active": $nav-link-bg-c--active,
+  "inline-gap": $space-md,
+);
+
+.c-subnav {
+  margin-top: $space-sm;
+  margin-left: 28px;
+  padding-left: $space-sm;
+  height: 0;
+
+  background-color: map-get($subnav, "bg-c");
+  border-left: 2px solid map-get($subnav, "list-border-l-c");
+  overflow: hidden;
+
+  transition: height .3s ease-out;
+}
+
+.c-subnav__list {
+  background-color: map-get($subnav, "list-bg-c");
+  box-shadow: 0 0 6px rgba(0, 0, 0, .1);
+  border-radius: map-get($subnav, "list-border-r");
+
+  overflow: hidden;
+}
+
+.c-subnav__item {
+  border-radius: 10px;
+  
+  overflow: hidden;
+
+  &:not(:last-of-type) {
+    margin-bottom: $space-sm;
+  }
+}
+
+.c-subnav__link {
+  display: flex;
+  
+  padding: map-get($subnav, "link-padding");
+
+  font-family: $font-primary;
+  font-size: $text-nm;
+  font-weight: 500;
+  line-height: 1;
+  color: map-get($subnav, "link-c");
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: map-get($nav, "link-c-hover"); 
+
+    background-color: map-get($nav, "link-bg-c-hover");
+  }
+
+  &:active,
+  &:focus,
+  &.is-active {
+    color: map-get($nav, "link-c-active"); 
+
+    background-color: map-get($nav, "link-bg-c-active");
+
+    .c-nav__subnav-caret {
+      border-color: map-get($subnav, "link-c-hover") transparent transparent transparent;
+    }
+  }
+}
+
+.c-nav--inline {
+  .c-subnav {
+    position: absolute;
+    z-index: 9999;
+  
+    top: calc(90% - map-get($subnav, "inline-gap"));
+    left: -$space-md;
+  
+    display: block;
+  
+    width: 100%;
+    min-width: 280px;
+    height: auto;
+  
+    padding: map-get($subnav, "inline-gap");
+
+    background-color: transparent;
+  
+    opacity: 0;
+    visibility: hidden;
+  
+    transition: opacity .14s ease-in;
+  }
+
+  .c-subnav__link {
+    padding-left: map-get($subnav, "inline-gap");
+  }
+}

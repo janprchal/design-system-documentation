@@ -1,0 +1,56 @@
+.c-location {
+  @extend .c-important;
+
+  padding: 0 0;
+  color: $tertiary-c--darker;
+}
+
+.c-location:before { 
+  background-color: transparent;
+}
+
+.c-location::after {
+  content: "";
+
+  position: absolute;
+  bottom: 2px;
+
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-top: 2.5px dotted $tertiary-c;
+}
+
+.c-location__path {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 50%;
+
+  display: block;
+  width: auto;
+  padding: $space-xs $space-xs;
+
+  visibility: hidden;
+  opacity: 0;
+
+  background-color: $tertiary-c--lightest;
+  border-radius: $border-r--bigger;
+
+  transform: translate(-50%, -50%);
+
+  font-size: $text-sm;
+  color: $text-c--dark;
+
+  transition: all .16s ease-in;
+
+  &::selection {
+    background-color: $secondary-c;
+  }
+}
+
+.c-location:hover .c-location__path {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -100%);
+}

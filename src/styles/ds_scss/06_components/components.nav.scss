@@ -1,0 +1,253 @@
+$nav: (
+  "item-h-mobile": 5.2rem,
+  "item-h": 6rem,
+  "item-border-b": linear-gradient(to right, $light-c, $outline-c),
+  "link-pr": $space-nm,
+  "link-pl": $space-md,
+  "link-c": $nav-link-c,
+  "link-c-hover": $nav-link-c--hover,
+  "link-bg-c-hover": $primary-c--lightest,
+
+  "indicator-w": 0.6rem,
+
+  "icon-w": 3.6rem,
+  "icon-h": 3.6rem,
+  "icon-gap": $space-nm,
+  "caret-gap": $space-md,
+);
+
+$nav-inline: (
+  "height": $header-h,
+  "padding-x": $space-md,
+  "indicator-h": 0.6rem,
+);
+
+.c-nav {
+  height: 100%;
+}
+
+.c-nav__list {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.c-nav__item {
+  @include mappy-query(screen) {
+    height: auto;
+    min-height: map-get($nav, "item-h");
+  }
+  min-height: map-get($nav, "item-h-mobile");
+}
+
+.c-nav__link {
+  @include mappy-query(screen) {
+    height: map-get($nav, "item-h");
+  }
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  height: map-get($nav, "item-h-mobile");
+  padding-right: map-get($nav, "link-pr");
+  padding-left: map-get($nav, "link-pl");
+
+  color: map-get($nav, "link-c");
+  font-weight: 500;
+
+  cursor: pointer;
+  user-select: none;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+
+    width: map-get($nav, "indicator-w");
+    height: 100%;
+
+    background-color: map-get($nav, "link-c-hover");
+
+    transition: transform 0.16s ease-in-out;
+    transform: translateX(-#{map-get($nav, "indicator-w")});
+  }
+
+  &:after {
+    right: 0;
+    bottom: 0;
+
+    width: 90%;
+    height: 0.1rem;
+
+    background-image: map-get($nav, "item-border-b");
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($nav, "link-bg-c-hover");
+
+    color: map-get($nav, "link-c-hover");
+    text-decoration: none;
+
+    &:before {
+      transform: translateX(0);
+    }
+
+    &:after {
+      display: none;
+    }
+
+    .c-nav__subnav-caret {
+      border-color: map-get($nav, "link-c-hover") transparent transparent
+        transparent;
+    }
+
+    .c-nav__icon {
+      fill: map-get($nav, "link-c-hover");
+    }
+  }
+
+  &.is-active .c-nav__subnav-caret {
+    transform: rotate(180deg);
+  }
+}
+
+.c-nav__icon {
+  width: map-get($nav, "icon-w");
+  height: map-get($nav, "icon-h");
+  margin-right: map-get($nav, "icon-gap");
+
+  fill: map-get($nav, "link-c");
+}
+
+.c-nav__subnav-caret {
+  position: absolute;
+  top: calc(50% - 0.2rem);
+  right: map-get($nav, "caret-gap");
+
+  width: 0;
+  height: 0;
+
+  border-width: 0.6rem 0.4rem 0 0.4rem;
+  border-style: solid;
+  border-color: map-get($nav, "link-c") transparent transparent transparent;
+
+  transition: transform 0.24s linear;
+}
+
+// Collapsed design
+// (should be used if there is more than 1lvl navigation)
+.nav-collapsed {
+  .c-nav__link {
+    @include mappy-query(screen) {
+      padding-right: 0;
+      padding-left: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .c-nav__name {
+    @include mappy-query(screen) {
+      display: none;
+    }
+  }
+
+  .c-nav__icon {
+    @include mappy-query(screen) {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  .c-nav__subnav-caret {
+    right: 1.2rem;
+  }
+}
+
+// Inline nav design
+.c-nav--inline {
+  .c-nav__list {
+    @include mappy-query(screen) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .c-nav__item {
+    @include mappy-query(screen) {
+      position: relative;
+      flex: 0 0 auto;
+
+      height: map-get($nav-inline, "height");
+    }
+  }
+
+  .c-nav__link {
+    height: 100%;
+    padding-right: map-get($nav-inline, "padding-x");
+    padding-left: map-get($nav-inline, "padding-x");
+
+    &::before {
+      position: absolute;
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 50%;
+
+      width: 5.6rem;
+      height: map-get($nav-inline, "indicator-h");
+      margin-left: -2.8rem;
+
+      transform: scaleY(0);
+      transform-origin: 50% 100%;
+    }
+
+    &.has-subnav {
+      padding-right: 3.2rem;
+    }
+
+    &:hover .c-nav__subnav-caret {
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.is-active {
+      background-color: transparent;
+
+      &::before {
+        transform: scaleY(1);
+      }
+    }
+  }
+
+  .c-nav__item:hover .c-subnav,
+  .c-nav__item:focus .c-subnav,
+  .c-nav__item:active .c-subnav {
+    @include mappy-query(screen) {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .c-nav__subnav-caret {
+    right: 1.2rem;
+  }
+}

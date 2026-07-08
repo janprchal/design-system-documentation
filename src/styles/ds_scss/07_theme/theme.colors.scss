@@ -1,0 +1,15 @@
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colors__color {
+  @include mappy-query(tablet) {
+    width: 25%;
+  }
+
+  @include mappy-query(screen) {
+    width: calc(100% / 7);
+  }
+  width: 50%;
+}

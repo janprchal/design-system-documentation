@@ -1,0 +1,73 @@
+$pagination: (
+  "btn-w": 2.6rem,
+  "btn-h": 2.6rem,
+
+  "padding-x": $space-xxs,
+  "gap": $space-xs,
+
+  "border-r": $border-r,
+  "border-c": $input-outline-c,
+  "border-c-hover": $link-c--hover,
+
+  "text-c": $text-c--light,
+  "text-c-hover": $link-c--hover,
+  "text-s": $text-sm,
+
+  "control-text-c": $text-c--lighter,
+);
+
+.c-pagination {
+  display: flex;
+}
+
+.c-pagination__page,
+.c-pagination__prev,
+.c-pagination__next {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: map-get($pagination, "btn-w");
+  height: map-get($pagination, "btn-h");
+  margin-left: map-get($pagination, "gap");
+  padding-right: map-get($pagination, "padding-x");
+  padding-left: map-get($pagination, "padding-x");
+
+  border: 0.1rem solid map-get($pagination, "border-c");
+  border-radius: map-get($pagination, "border-r");
+
+  color: map-get($pagination, "text-c");
+  font-weight: 500;
+  font-size: map-get($pagination, "text-s");
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    border-color: map-get($pagination, "border-c-hover");
+
+    color: map-get($pagination, "text-c-hover");
+    text-decoration: none;
+  }
+}
+
+.c-pagination__page--gap {
+  border: 0 none;
+
+  cursor: initial;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    color: map-get($pagination, "text-c");
+  }
+}
+
+.c-pagination__prev,
+.c-pagination__next {
+  color: map-get($pagination, "control-text-c");
+  font-weight: 500;
+}

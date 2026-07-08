@@ -1,0 +1,55 @@
+input,
+textarea {
+  @include placeholder {
+    color: $text-c--light;
+    font-weight: 400;
+  }
+  width: 100%;
+  min-height: $input-h;
+  padding: $space-xxs $space-sm;
+
+  background-color: $block-bg-c;
+  border: $border-w solid $input-outline-c;
+  border-radius: $border-r;
+
+  color: $text-c;
+  font-weight: 400;
+
+  &:hover,
+  &:focus {
+    outline: 0 none;
+  }
+
+  &:hover {
+    border-color: $input-outline-c--hover;
+  }
+
+  &:focus {
+    border-color: $secondary-c;
+  }
+}
+
+// Error state of an input
+input.has-error {
+  @include placeholder {
+    color: $negative-c--lighter;
+  }
+  background-color: $negative-c--lightest;
+  border-color: $negative-c;
+
+  color: $negative-c--darker;
+
+  &:focus {
+    border-color: $negative-c--darker;
+  }
+}
+
+// Valid state of an input
+input.has-success {
+  background-color: $positive-c--lightest;
+  border-color: $positive-c;
+
+  &:focus {
+    border-color: $positive-c--darker;
+  }
+}

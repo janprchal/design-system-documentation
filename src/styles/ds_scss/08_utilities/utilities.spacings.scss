@@ -1,0 +1,17 @@
+//-----------------------------------//
+//               MARGINS             //
+//-----------------------------------//
+/*
+  Generates margin classes from 0 to $gaps-stop(64)
+  e.g.: mt-0, mb-12, ml-48
+*/
+@include margin($gaps-stop, $increment);
+
+//-----------------------------------//
+//              PADDINGS             //
+//-----------------------------------//
+/*
+  Generates padding classes from 0 to $gaps-stop(64)
+  e.g.: pt-4, pb-16, pl-64
+*/
+@include padding($gaps-stop, $increment);

@@ -1,0 +1,130 @@
+$message: (
+  "padding-x": $space-sm,
+  "padding-y": $space-nm,
+
+  "bg-c": $block-bg-c,
+  "box-s": $block-box-shadow,
+
+  "border-r": $border-r,
+  "border-c": $secondary-c,
+
+  "icon-s": $text-md,
+  "icon-c": $secondary-c,
+
+  "heading-text-c": $secondary-c--darker,
+  "heading-gap": $space-xxs,
+
+  "text-s": $text-sm,
+);
+
+$message-positive: (
+  "border-c": $positive-c,
+  "heading-text-c": $positive-c--darker,
+  "icon-c": $positive-c,
+);
+
+$message-warning: (
+  "border-c": $warning-c,
+  "heading-text-c": $warning-c--darker,
+  "icon-c": $warning-c,
+);
+
+$message-negative: (
+  "border-c": $negative-c,
+  "heading-text-c": $negative-c,
+  "icon-c": $negative-c,
+);
+
+.c-message {
+  position: relative;
+  display: flex;
+
+  padding: map-get($message, "padding-y") map-get($message, "padding-x");
+
+  background-color: map-get($message, "bg-c");
+  border-radius: map-get($message, "border-r");
+
+  box-shadow: map-get($message, "box-s");
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+
+    width: 0.5rem;
+    height: 100%;
+
+    background-color: map-get($message, "border-c");
+    border-radius: map-get($message, "border-r") 0 0
+      map-get($message, "border-r");
+  }
+}
+
+.c-message__icon {
+  height: map-get($message, "icon-s");
+  margin-top: 0.1rem;
+  margin-right: 0.8rem;
+
+  color: map-get($message, "icon-c");
+  font-size: map-get($message, "icon-s");
+  line-height: 1;
+}
+
+.c-message__heading {
+  margin-bottom: map-get($message, "heading-gap");
+
+  color: map-get($message, "heading-text-c");
+  font-weight: 700;
+  font-size: map-get($message, "text-s");
+}
+
+.c-message__text {
+  margin-bottom: 0;
+
+  font-size: map-get($message, "text-s");
+}
+
+.c-message--positive {
+  &:before {
+    background-color: map-get($message-positive, "border-c");
+  }
+
+  .c-message__heading {
+    color: map-get($message-positive, "heading-text-c");
+  }
+
+  .c-message__icon {
+    color: map-get($message-positive, "icon-c");
+  }
+}
+
+.c-message--warning {
+  &:before {
+    background-color: map-get($message-warning, "border-c");
+  }
+
+  .c-message__heading {
+    color: map-get($message-warning, "heading-text-c");
+  }
+
+  .c-message__icon {
+    color: map-get($message-warning, "icon-c");
+    font-size: $text-nm;
+  }
+}
+
+.c-message--negative {
+  &:before {
+    background-color: map-get($message-negative, "border-c");
+  }
+
+  .c-message__heading {
+    color: map-get($message-negative, "heading-text-c");
+  }
+
+  .c-message__icon {
+    color: map-get($message-negative, "icon-c");
+  }
+}

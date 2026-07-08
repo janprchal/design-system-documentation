@@ -1,0 +1,35 @@
+.o-form-group {
+  margin-bottom: $space-md;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.o-form-group__title {
+  max-width: 44.8rem;
+  margin-bottom: $space-xxs;
+}
+
+.o-form-group__action {
+}
+
+.o-form-group--inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .o-form-group__title {
+    display: flex;
+    flex: 0 0 30%;
+    align-items: center;
+
+    height: $input-h;
+    margin-right: 2%;
+    margin-bottom: 0;
+  }
+
+  .o-form-group__action {
+    flex: 0 0 68%;
+  }
+}

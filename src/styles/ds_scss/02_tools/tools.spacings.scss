@@ -1,0 +1,192 @@
+// =============================================================================
+// Generates margins in the form of mt-$i {margin-top: $i} where $i is an iteration
+// from 0 to 6.4rem (64px) after 0.4rem (4px)
+// generates in all directions
+// $gaps-stop - variables.scss
+// =============================================================================
+
+@mixin margin($gaps-stop, $increment) {
+  $margins: (
+    top: (
+      shortcut: mt,
+      long: margin-top,
+    ),
+    right: (
+      shortcut: mr,
+      long: margin-right,
+    ),
+    bottom: (
+      shortcut: mb,
+      long: margin-bottom,
+    ),
+    left: (
+      shortcut: ml,
+      long: margin-left,
+    ),
+    margin: (
+      shortcut: m,
+      long: margin,
+    ),
+  );
+
+  @each $item, $direction in $margins {
+    $i: 0;
+
+    @while $i <= $gaps-stop {
+      .#{map-get($direction, shortcut)}-#{$i} {
+        #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+      }
+
+      $i: $i + $increment;
+    }
+  }
+
+  @each $item, $direction in $margins {
+    $i: 0;
+
+    @include mappy-query(mobile-only) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--sm {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+
+  @each $item, $direction in $margins {
+    $i: 0;
+
+    @include mappy-query(tablet-only) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--md {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+
+  @each $item, $direction in $margins {
+    $i: 0;
+
+    @include mappy-query(screen-only) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--lg {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+
+  @each $item, $direction in $margins {
+    $i: 0;
+
+    @include mappy-query(largescreen) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--xl {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+}
+
+@mixin padding($gaps-stop, $increment) {
+  $paddings: (
+    top: (
+      shortcut: pt,
+      long: padding-top,
+    ),
+    right: (
+      shortcut: pr,
+      long: padding-right,
+    ),
+    bottom: (
+      shortcut: pb,
+      long: padding-bottom,
+    ),
+    left: (
+      shortcut: pl,
+      long: padding-left,
+    ),
+    padding: (
+      shortcut: p,
+      long: padding,
+    ),
+  );
+
+  @each $item, $direction in $paddings {
+    $i: 0;
+
+    @while $i <= $gaps-stop {
+      .#{map-get($direction, shortcut)}-#{$i} {
+        #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+      }
+
+      $i: $i + 4;
+    }
+  }
+
+  @each $item, $direction in $paddings {
+    $i: 0;
+
+    @include mappy-query(mobile-only) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--sm {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+
+  @each $item, $direction in $paddings {
+    $i: 0;
+
+    @include mappy-query(tablet-only) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--md {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+
+  @each $item, $direction in $paddings {
+    $i: 0;
+
+    @include mappy-query(screen-only) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--lg {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+
+  @each $item, $direction in $paddings {
+    $i: 0;
+
+    @include mappy-query(largescreen) {
+      @while $i <= $gaps-stop {
+        .#{map-get($direction, shortcut)}-#{$i}--xl {
+          #{map-get($direction, long)}: #{$i * 0.1}rem !important;
+        }
+
+        $i: $i + 4;
+      }
+    }
+  }
+}

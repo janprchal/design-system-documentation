@@ -1,0 +1,258 @@
+$nav: (
+  "bg-c": $block-bg-c,
+
+  "item-h-mobile": 52px,
+  "item-h": 60px,
+  "item-mb": $space-md,
+
+  "link-pr": $space-nm,
+  "link-pl": $space-nm,
+  "link-c": $nav-link-c,
+  "link-c-hover": $nav-link-c--hover,
+  "link-bg-c-hover": $outline-c,
+  "link-c-active": $light-c,
+  "link-bg-c-active": $nav-link-bg-c--active,
+
+  "indicator-w": 6px,
+
+  "icon-w": 28px,
+  "icon-h": 28px,
+  "icon-gap": $space-nm,
+  "caret-gap": $space-md,
+);
+
+$nav-inline: (
+  "height": $header-h,
+  "padding-x": $space-md,
+  "indicator-h": 6px,
+);
+
+.c-nav {
+  height: 100%;
+
+  padding-top: $space-md;
+
+  background-color: map-get($nav, "bg-c");
+}
+
+.c-nav__list {
+  margin: 0;
+  padding: 0 $space-sm $space-lg;
+  
+  list-style-type: none;
+}
+
+.c-nav__item {
+  min-height: map-get($nav, "item-h-mobile");
+
+  &:not(:last-of-type) {
+    margin-bottom: map-get($nav, "item-mb");
+  }
+
+  @include mappy-query(screen) {
+    min-height: map-get($nav, "item-h");
+    height: auto;
+  }
+}
+
+.c-nav__link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  height: map-get($nav, "item-h-mobile");
+  border-radius: 10px;
+
+  padding-right: map-get($nav, "link-pr");
+  padding-left: map-get($nav, "link-pl");
+
+  font-family: $font-primary;
+  font-size: $text-nm;
+  font-weight: 500;
+  color: map-get($nav, "link-c");
+  text-decoration: none;
+
+  cursor: pointer;
+  user-select: none;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: map-get($nav, "link-c-hover"); 
+
+    background-color: map-get($nav, "link-bg-c-hover");
+
+    .c-nav__subnav-caret {
+      border-color: transparent map-get($nav, "link-c-hover") map-get($nav, "link-c-hover") transparent;
+    }
+
+    .c-nav__icon {
+      fill: map-get($nav, "link-c-hover");
+    }
+  }
+
+  &:not(.has-subnav):focus,
+  &:not(.has-subnav):active,
+  &:not(.has-subnav).is-active {
+    color: map-get($nav, "link-c-active"); 
+
+    background-color: map-get($nav, "link-bg-c-active");
+
+    .c-nav__subnav-caret {
+      border-color: transparent map-get($nav, "link-c-active") map-get($nav, "link-c-active") transparent;
+    }
+
+    .c-nav__icon {
+      fill: map-get($nav, "link-c-active");
+    }
+  }
+
+  &.is-open .c-nav__subnav-caret {
+    transform: rotate(225deg);
+  }
+
+  @include mappy-query(screen) {
+    height: map-get($nav, "item-h");
+  }
+}
+
+.c-nav__icon {
+  width: map-get($nav, "icon-w");
+  height: map-get($nav, "icon-h");
+  margin-right: map-get($nav, "icon-gap");
+
+  fill: map-get($nav, "link-c");
+}
+
+.c-nav__subnav-caret {
+  position: absolute;
+  right: map-get($nav, "caret-gap");
+  top: calc(50% - 4px);
+
+  width: 8px;
+  height: 8px;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent map-get($nav, "link-c") map-get($nav, "link-c") transparent;
+
+  transform: rotate(45deg);
+  transition: transform .24s linear;
+}
+
+// Collapsed design
+// (should be used if there is more than 1lvl navigation)
+.nav-collapsed {
+  .c-nav__link {
+    @include mappy-query(screen) {
+      padding-right: 0;
+      padding-left: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .c-nav__name {
+    @include mappy-query(screen) {
+      display: none;
+    }
+  }
+
+  .c-nav__icon {
+    @include mappy-query(screen) {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  .c-nav__subnav-caret {
+    right: .75rem;
+  }
+}
+
+// Inline nav design
+.c-nav--inline {
+  .c-nav__list {
+    @include mappy-query(screen) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .c-nav__item {
+    @include mappy-query(screen) {
+      position: relative;
+
+      height: map-get($nav-inline, "height");
+      flex: 0 0 auto;
+    }
+  }
+
+  .c-nav__link {
+    height: 100%;
+
+    padding-right: map-get($nav-inline, "padding-x");
+    padding-left: map-get($nav-inline, "padding-x");
+
+    &::before {
+      position: absolute;
+      width: 56px;
+
+      top: auto;
+      bottom: 0;
+      right: auto;
+      left: 50%;
+      margin-left: -28px;
+
+      height: map-get($nav-inline, "indicator-h");
+
+      transform: scaleY(0);
+      transform-origin: 50% 100%;
+    }
+
+    &.has-subnav {
+      padding-right: 2rem;
+    }
+
+    &:hover .c-nav__subnav-caret {
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.is-active {
+      background-color: transparent;
+
+      &::before {
+        transform: scaleY(1);
+      }
+    }
+  }
+
+  .c-nav__item:hover .c-subnav,
+  .c-nav__item:focus .c-subnav,
+  .c-nav__item:active .c-subnav {
+    @include mappy-query(screen) {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .c-nav__subnav-caret {
+    right: .75rem;
+  }
+}

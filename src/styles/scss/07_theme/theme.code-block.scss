@@ -1,0 +1,14 @@
+.prism-editor-wrapper.ds-documentation {
+  .prism-editor__editor {
+    font-family: $font-mono;
+    font-size: $text-nm;
+    padding: 0;
+  }
+  
+  /* optional class for removing the outline */
+  .prism-editor__textarea:focus {}
+  
+  .prism-editor__editor {
+    pointer-events: initial;
+  }
+}

@@ -1,0 +1,349 @@
+/*
+  Initial .c-btn properties are same as those in elements.button.scss
+*/
+@use "sass:math";
+
+$btn: (
+  "min-w": 180px,
+  "h": $input-h,
+  "padding": calc($space-sm - 1px) calc($space-lg - 1px),
+  
+  "default-bg-c": $primary-c,
+  "hover-bg-c": $primary-c--darker,
+
+  "border-r": math.div($input-h, 2),
+  "border-w": $border-w,
+  
+  "text-c": $light-c,
+  "text-s": $text-sm,
+);
+
+$btn-secondary: (
+  "default-bg-c": $secondary-c,
+  "hover-bg-c": $secondary-c--darker,
+  
+  "text-c": $text-c--darker,
+);
+
+$btn-negative: (
+  "default-bg-c": $negative-c,
+  "hover-bg-c": $negative-c--darker,
+);
+
+$btn-positive: (
+  "default-bg-c": $positive-c,
+  "hover-bg-c": $positive-c--darker,
+  "text-c": $light-c,
+);
+
+$btn-neutral: (
+  "default-bg-c": $neutral-c,
+  "border-c": $neutral-c--darker,
+  "hover-bg-c": $neutral-c--darker,
+  "text-c": $text-c,
+);
+
+$btn-large: (
+  "min-w": 200px,
+  "min-h": 60px,
+  "padding-x": calc($space-md - 1px),
+  "text-s": $text-md,
+  "border-w": 2px,
+);
+
+$btn-small: (
+  "padding-x": calc($space-sm - 1px),
+  "padding-y": $space-xs,
+  "text-s": $text-sm,
+);
+
+.c-btn {
+  display: inline-flex;
+
+  position: relative;
+
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+  min-width: map-get($btn, "min-w");
+  height: map-get($btn, "h");
+
+  padding: map-get($btn, "padding");
+
+  background-color: map-get($btn, "default-bg-c");
+
+  border: map-get($btn, "border-w") solid transparent;
+  border-radius: map-get($btn, "border-r");
+
+  box-shadow: 0 0 0 0;
+
+  color: map-get($btn, "text-c");
+  font-size: map-get($btn, "text-s");
+  font-weight: 400;
+  line-height: 1.2;
+
+  text-align: center;
+  text-decoration: none;
+
+  letter-spacing: 0.5px;
+
+  transition: all .3s ease;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn, "hover-bg-c");
+    border-color: transparent;
+
+    text-decoration: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.c-btn--secondary {
+  color: map-get($btn-secondary, "text-c");
+  background-color: map-get($btn-secondary, "default-bg-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-secondary, "hover-bg-c");
+  }
+}
+
+.c-btn--negative {
+  background-color: map-get($btn-negative, "default-bg-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-negative, "hover-bg-c");
+  }
+}
+
+.c-btn--positive {
+  background-color: map-get($btn-positive, "default-bg-c");
+  color: map-get($btn-positive, "text-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-positive, "hover-bg-c");
+  }
+}
+
+.c-btn--neutral {
+  background-color: map-get($btn-neutral, "default-bg-c");
+  border-color: map-get($btn-neutral, "border-c");
+
+  color: map-get($btn-neutral, "text-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-neutral, "hover-bg-c");
+  }
+}
+
+.c-btn-alt {
+  @extend .c-btn;
+  background-color: transparent;
+
+  border-color: map-get($btn, "default-bg-c");
+  color: map-get($btn, "default-bg-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn, "default-bg-c");
+
+    border-color: map-get($btn, "hover-bg-c");
+    color: map-get($btn, "text-c");
+  }
+
+  &:disabled {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+      color: inherit;
+    }
+  }
+}
+
+.c-btn-alt--secondary { 
+  border-color: map-get($btn-secondary, "default-bg-c");
+  color: map-get($btn-secondary, "hover-bg-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-secondary, "hover-bg-c");
+    border-color: map-get($btn-secondary, "hover-bg-c");
+  }
+}
+
+.c-btn-alt--negative {
+  border-color: map-get($btn-negative, "default-bg-c");
+  color: map-get($btn-negative, "hover-bg-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-negative, "hover-bg-c");
+    border-color: map-get($btn-negative, "hover-bg-c");
+  }
+}
+
+.c-btn-alt--positive {
+  border-color: map-get($btn-positive, "default-bg-c");
+  color: map-get($btn-positive, "hover-bg-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-positive, "hover-bg-c");
+    border-color: map-get($btn-positive, "hover-bg-c");
+  }
+}
+
+.c-btn-alt--neutral {
+  background-color: transparent;
+  border-color: map-get($btn-neutral, "border-c");
+
+  color: map-get($btn-neutral, "text-c");
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    background-color: map-get($btn-neutral, "hover-bg-c");
+    border-color: map-get($btn-neutral, "hover-bg-c");
+  }
+}
+
+.c-btn--large {
+  min-width: map-get($btn-large, "min-w");
+  min-height: map-get($btn-large, "min-h");
+
+  padding-right: map-get($btn-large, "padding-x");
+  padding-left: map-get($btn-large, "padding-x");
+
+  border-width: map-get($btn-large, "border-w");
+
+  font-size: map-get($btn-large, "text-s");
+}
+
+.c-btn--small,
+.c-btn--full-w {
+  min-width: unset;
+  height: unset;
+
+  padding-top: map-get($btn-small, "padding-y");
+  padding-right: map-get($btn-small, "padding-x");
+  padding-bottom: map-get($btn-small, "padding-y");
+  padding-left: map-get($btn-small, "padding-x");
+  
+  font-size: map-get($btn-small, "text-s");
+}
+
+.c-btn--full-w {
+  width: 100%;
+  height: map-get($btn, "min-h");
+
+  align-items: center;
+  line-height: 1;
+}
+
+.c-btn-copy {
+  @extend .c-btn-alt;
+  @extend .c-btn--small;
+
+  min-width: 80px;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  border-color: $tertiary-c;
+  border-radius: 3px;
+
+  font-size: 1.2rem;
+  color: $tertiary-c;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $tertiary-c--darker;
+    border-color: $tertiary-c--darker;
+  }
+
+  &.has-success {
+    @extend .c-btn--positive;
+    border-color: $positive-c;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $light-c;
+      border-color: $positive-c--darker;
+    }
+  }
+
+  &.has-error {
+    @extend .c-btn--negative;
+    border-color: $negative-c;
+
+    color: $light-c;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $light-c;
+      border-color: $negative-c--darker;
+    }
+  }
+}
+
+.c-btn-copy--css {
+  min-width: map-get($btn, "min-w");
+  height: map-get($btn, "h");
+
+  margin-top: $space-lg;
+  padding: map-get($btn, "padding");
+
+  background-color: $secondary-c;
+  color: $text-c;
+  border: 0 none;
+  border-radius: map-get($btn, "border-r");
+
+  font-size: map-get($btn, "text-s");
+  font-weight: 600;
+
+  transition: all .24s linear;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $secondary-c--darker;
+    color: $text-c--darker;
+  }
+}

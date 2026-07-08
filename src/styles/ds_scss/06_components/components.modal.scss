@@ -1,0 +1,147 @@
+$modal: (
+  "max-w": 89.6rem,
+  "z-index": $modal-z,
+  "gap-top": $space-xxl,
+  "gap-bottom": $space-lg,
+
+  "bg-c": $block-bg-c,
+  "border-r": $border-r--bigger,
+  "border-c": $outline-c,
+
+  "header-padding": $space-nm $space-md,
+  "heading-text-s": $text-xl,
+  "close-gap": $space-nm,
+
+  "content-padding": $space-md,
+  "footer-padding": $space-nm $space-md,
+);
+
+.c-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: map-get($modal, "z-index");
+  overflow: auto;
+
+  width: 100%;
+  height: 0vh;
+
+  transition: height 0.12s linear;
+
+  &.is-open {
+    z-index: map-get($modal, "z-index");
+
+    height: 100vh;
+    min-height: 100%;
+
+    .c-modal__overlay {
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.c-modal__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+
+  background-color: rgba(83, 91, 124, 0.5);
+
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+
+  transition: opacity 0.24s 0s linear;
+  backdrop-filter: blur(1rem);
+}
+
+.c-modal__dialog {
+  width: auto;
+  max-width: map-get($modal, "max-w");
+  margin: map-get($modal, "gap-top") auto map-get($modal, "gap-bottom");
+
+  background-color: map-get($modal, "bg-c");
+  border-radius: map-get($modal, "border-r");
+
+  &.is-closed {
+    animation: modal-hide 0.42s ease-out forwards;
+  }
+
+  &.is-open {
+    animation: modal-show 0.42s ease-out forwards;
+  }
+}
+
+.c-modal__header {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  padding: map-get($modal, "header-padding");
+
+  border-bottom: 0.1rem solid map-get($modal, "border-c");
+}
+
+.c-modal__name {
+  display: flex;
+  flex: 1 1 auto;
+
+  font-size: map-get($modal, "heading-text-s");
+}
+
+.c-modal__control {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.c-modal__close {
+  position: relative;
+  right: -#{map-get($modal, "close-gap")};
+
+  padding: 0 map-get($modal, "close-gap");
+
+  font-weight: 700;
+  font-size: 2.368rem;
+
+  cursor: pointer;
+}
+
+.c-modal__content {
+  padding: map-get($modal, "content-padding");
+
+  border-bottom: 0.1rem solid map-get($modal, "border-c");
+}
+
+.c-modal__footer {
+  padding: map-get($modal, "footer-padding");
+}
+
+@keyframes modal-hide {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes modal-show {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

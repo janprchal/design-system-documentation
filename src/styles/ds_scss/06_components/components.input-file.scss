@@ -1,0 +1,121 @@
+$input-file: (
+  "height": $input-h,
+
+  "btn-max-w": 12rem,
+  "border-w": $border-w,
+  "border-r": $border-r,
+
+  "space-xxs": $space-xxs,
+  "space-xs": $space-xs,
+  "space-sm": $space-sm,
+  "space-nm": $space-nm,
+  "space-md": $space-md,
+
+  "block-bg-c": $block-bg-c,
+  "neutral-c": $neutral-c,
+  "secondary-c": $secondary-c,
+  "outline-c": $input-outline-c,
+  "outline-c--hover": $input-outline-c--hover,
+  "text-c": $text-c,
+
+  "negative-c": $negative-c,
+  "light-c": $light-c,
+);
+
+.c-file {}
+
+.c-file__input {
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+
+  width: 0.01rem;
+  height: 0.01rem;
+
+  opacity: 0;
+}
+
+.c-file__label {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: map-get($input-file, "height");
+
+  background-color: map-get($input-file, "block-bg-c");
+  border: map-get($input-file, "border-w") solid
+    map-get($input-file, "outline-c");
+  border-radius: map-get($input-file, "border-r");
+
+  color: map-get($input-file, "text-c");
+  font-weight: 400;
+
+  cursor: pointer;
+
+  &:before {
+    content: attr(button-label);
+    position: relative;
+    top: 0;
+    left: map-get($input-file, "border-w") * -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: map-get($input-file , "btn-max-w");
+    height: calc(100% + 2 * map-get($input-file, "border-w"));
+
+    margin-right: map-get($input-file, "space-sm");
+    padding: map-get($input-file , "space-xxs") map-get($input-file , "space-sm");
+
+    background-color: map-get($input-file, "neutral-c");
+    border-width: map-get($input-file, "border-w")
+      map-get($input-file, "border-w") map-get($input-file, "border-w")
+      map-get($input-file, "border-w");
+    border-style: solid;
+    border-color: map-get($input-file, "outline-c");
+    border-radius: map-get($input-file, "border-r") 0 0
+      map-get($input-file, "border-r");
+
+    color: map-get($input-file, "text-c");
+    font-weight: 600;
+  }
+}
+
+.c-file__input + .c-file__label {
+  &:hover,
+  &:focus {
+    outline: 0 none;
+  }
+
+  &:hover {
+    border-color: map-get($input-file, "outline-c--hover");
+
+    &:before {
+      border-color: map-get($input-file, "outline-c--hover");
+    }
+  }
+}
+
+.c-file__input:hover + .c-file__label {
+  border-color: map-get($input-file, "outline-c--hover");
+}
+
+.c-file__input:focus + .c-file__label,
+.c-file__input:focus + .c-file__label:before {
+  border-color: map-get($input-file, "secondary-c");
+}
+
+.c-file.has-error {
+  .c-file__label {
+    border-color: map-get($input-file, "negative-c");
+
+    &::before {
+      background-color: map-get($input-file, "negative-c");
+      border-color: map-get($input-file, "negative-c");
+
+      color: map-get($input-file, "light-c");
+    }
+  }
+}

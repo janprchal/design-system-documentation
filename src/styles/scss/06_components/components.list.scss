@@ -1,0 +1,33 @@
+.c-list {}
+
+.c-list--dot {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.c-list__item {
+  display: flex;
+
+  margin-bottom: $space-md;
+}
+
+.c-list__term {
+  flex: 0 0 200px;
+  max-width: 200px;
+  margin-right: $space-xs;
+}
+
+.c-list__desc {
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+// .c-list__term {}
+
+.c-list__divider {
+  display: flex;
+  flex: 0 0 10px;
+
+  margin-right: 8px;
+  max-width: 10px;
+}

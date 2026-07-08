@@ -1,0 +1,45 @@
+//-------------------------------//
+//           RESPONSIVE          //
+//-------------------------------//
+$breakpoints: (
+  mobile-min: 320px,
+  mobile-max: 480px,
+  mobile-l-min: 481px,
+  mobile-l-max: 767px,
+
+  tablet-min: 768px,
+  tablet-max: 1024px,
+  tablet-l-min: 1025px,
+  tablet-l-max: 1160px,
+
+  screen-min: 1161px,
+  screen-max: 1680px,
+
+  largescreen-min: 1681px,
+);
+
+// some of these queries are used in $grid-map object
+// in settings.layout.scss
+$mappy-queries: (
+  mobile: mappy-bp(mobile-min),
+  mobile-bigger: mappy-bp(mobile-l-min),
+  mobile-only: mappy-bp(mobile-min mobile-l-max),
+
+  tablet: mappy-bp(tablet-min),
+  tablet-only: mappy-bp(tablet-min tablet-l-max),
+  tablet-bigger: mappy-bp(tablet-l-min),
+  tablet-landscape: mappy-bp(tablet-min orientation landscape),
+
+  screen: mappy-bp(screen-min),
+  screen-only: mappy-bp(screen-min screen-max),
+  largescreen: mappy-bp(largescreen-min),
+);
+
+// "-sm": "mobile" -> "mobile is related to mobile $mappy-queries"
+$grid-map: (
+  "": 0,
+  "-sm": "mobile",
+  "-md": "tablet",
+  "-lg": "screen",
+  "-xl": "largescreen",
+);

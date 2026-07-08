@@ -1,0 +1,28 @@
+/*
+  Boders
+*/
+$border-r: 3px;
+$border-r--bigger: 5px;
+
+$border-w: 1px;
+
+/*
+  Path where images are store
+*/
+$img-path: './../img';
+
+/*
+  margins and padding are generate up to 
+  e.g. mb-5 -> mb-50
+*/
+$gaps-stop: 50;
+
+/*
+  Inputs, Buttons
+*/
+$input-h: 4.6rem;
+
+/* 
+  Universal box-shadow
+*/
+$block-box-shadow: 0 2px 8px rgba(0, 0, 0, .18);

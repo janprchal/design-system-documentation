@@ -1,0 +1,62 @@
+$box: (
+  "bg-c": #EAE8FF,
+  "bg-c--nested": #cbc7fd,
+  "border-c": #999999,
+
+  "bg-c-green": #dbfdd3,
+);
+
+.c-layout-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: map-get($box, "bg-c");
+  border: 1px solid map-get($box, "border-c");
+
+  font-family: $font-mono;
+  font-weight: 400;
+  font-size: $text-nm;
+}
+
+.c-layout-box--nested {
+  background-color: map-get($box, "bg-c--nested");
+}
+
+.c-layout-box--block {
+  display: block;
+}
+
+.c-layout-box--no-left-b {
+  border-left: 0;
+}
+
+.c-layout-box--no-top-b {
+  border-top: 0;
+}
+
+.c-layout-box--blank {
+  background-color: transparent;
+  border: 0 none;
+}
+
+.c-layout-box--transparent {
+  background-color: transparent;
+}
+
+.c-layout-box--auto {
+  width: auto;
+  height: auto;
+
+  min-width: 120px;
+
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.c-layout-box--green {
+  background-color: map-get($box, "bg-c-green");
+}

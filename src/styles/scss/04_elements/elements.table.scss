@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+
+  background-color: $block-bg-c;
+  border: 1px solid $outline-c--dark;
+  border-collapse: separate;
+  border-radius: $border-r--bigger;
+  border-spacing: 0;
+
+  font-size: $text-nm;
+}
+
+tr {
+  height: 5rem;
+}
+
+th,
+td {
+  padding: $space-sm $space-nm;
+
+  border-bottom: 0.1rem solid $outline-c--dark;
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+}
+
+td:not(:last-child), 
+th:not(:last-child) {
+  border-right: 1px solid $outline-c--dark;
+}
+
+
+tr:last-child td {
+  border-bottom: 0 none;
+}

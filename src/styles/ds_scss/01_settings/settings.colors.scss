@@ -1,0 +1,88 @@
+//-------------------------------//
+//             COLORS            //
+//-------------------------------//
+
+$light-c: #ffffff;
+$dark-c: #000000;
+$dark-c--lighter: #282828;
+
+$primary-c--darkest: #2b0d4c;
+$primary-c--dark: #360a66;
+$primary-c--darker: #491880;
+$primary-c: #5d2d93;
+$primary-c--lighter: #7847af;
+$primary-c--light: #936cbf;
+$primary-c--lightest: #eae7fc;
+
+$secondary-c--darkest: #004592;
+$secondary-c--dark: #0059bb;
+$secondary-c--darker: #1b72d2;
+$secondary-c: #1a86fd;
+$secondary-c--lighter: #56a6fe;
+$secondary-c--light: #68affd;
+$secondary-c--lightest: #b0cafe;
+
+$tertiary-c--darkest: #ea3e00;
+$tertiary-c--dark: #f46a38;
+$tertiary-c--darker: #f77445;
+$tertiary-c: #fc8255;
+$tertiary-c--lighter: #f8916b;
+$tertiary-c--light: #ff9d79;
+$tertiary-c--lightest: #f8ccbc;
+
+$positive-c--darkest: #024a01;
+$positive-c--dark: #027500;
+$positive-c--darker: #278825;
+$positive-c: #55b852;
+$positive-c--lighter: #6eca6c;
+$positive-c--light: #9dd79b;
+$positive-c--lightest: #e9f4e8;
+
+$warning-c--darkest: #6d5300;
+$warning-c--dark: #ca9a00;
+$warning-c--darker: #d9a708;
+$warning-c: #f9c008;
+$warning-c--lighter: #ffd241;
+$warning-c--light: #ffdf78;
+$warning-c--lightest: #ffe694;
+
+$negative-c--darkest: #830303;
+$negative-c--dark: #a71111;
+$negative-c--darker: #cd2c2c;
+$negative-c: #ee3a3a;
+$negative-c--lighter: #f36d6d;
+$negative-c--light: #ffacac;
+$negative-c--lightest: #fef5f5;
+
+$outline-c: #e9eaf2;
+$outline-c--darker: #c1c4d5;
+
+$input-outline-c: #d3d4d9;
+$input-outline-c--hover: #c1c4d5;
+
+$neutral-c--light: #f3f4f6;
+$neutral-c: #e9eaf2;
+$neutral-c--darker: #d3d4d9;
+
+$block-bg-c: #fdfdff;
+$body-bg-c: #edeff6;
+
+$nav-link-c--lighter: #7d8097;
+$nav-link-c: #635b68;
+$nav-link-c--hover: #5b538e;
+
+$link-c: $secondary-c;
+$link-c--hover: $secondary-c--darker;
+
+$table-border-c: #f2f3f9;
+$table-even-bg: #f4f5f7;
+$table-hover-bg: #eaecf2;
+
+//-------------------------------//
+//          TEXT-COLORS          //
+//-------------------------------//
+$text-c--darkest: #010401;
+$text-c: #282828;
+$text-c--lighter: #626262;
+$text-c--light: #a0a0a0;
+$text-c--lightest: #e0e0e0;

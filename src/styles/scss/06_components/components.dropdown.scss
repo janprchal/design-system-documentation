@@ -1,0 +1,426 @@
+@use "sass:math";
+
+/*
+  Caret is made from two elements (:before & :after) 
+  :after is a shadow, it is larger triangle from borders 
+  and bg-color has low opacity which creates illusion of shadow
+
+  Version with clip-path to clip shape of triangle and use of filter: drop-shadow 
+  to create shadow in shape of clipped polygon 
+  (box-shadow property creates rectangular shadow)
+  Available after we end support of IE11
+  https://caniuse.com/#search=drop-shadow
+  https://plnkr.co/edit/kePuv7OLQwawPjiBLg3J?p=preview
+*/
+
+$dropdown: (
+  "min-w": 200px,
+  "max-w": 260px,
+  "bg-c": $block-bg-c,
+
+  "border-r": $border-r--bigger,
+  "border-c": $outline-c,
+
+  "caret-shadow": rgba(0, 0, 0, 0.03),
+  "caret-position-x": $space-sm,
+  "caret-position-y": $space-sm,
+  "caret-w": 18px,
+  "caret-h": 10px,
+
+  "icon-w": 20px,
+  "icon-c": $nav-link-c--lighter,
+
+  "space-xxs": $space-xxs,
+  "space-xs": $space-xs,
+  "space-sm": $space-sm,
+  "space-nm": $space-nm,
+  "space-md": $space-md,
+
+  "text-c": $text-c,
+
+  "link-bg-c-hover": $primary-c--lightest,
+  "link-text-c-hover": $nav-link-c--hover,
+  "link-icon-c-hover": $nav-link-c--hover,
+
+  "box-shadow": 0 0 12px rgba(#000, 0.16),
+);
+
+$dots: (
+  "height": 20px, // 3 * dot-h + 2 * dot-gap
+  "dot-w": 4px,
+  "dot-h": 4px,
+  "dot-gap": 4px,
+  "padding": $space-sm,
+  "margin": $space-sm,  
+  
+  "bg-c": $text-c--light,
+  "hover-bg-c": $text-c,
+);
+
+.c-dropdown {
+  position: relative;
+  z-index: $dropdown-z;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.c-dropdown__content {
+  position: absolute;
+  top: calc(100% + map-get($dropdown, "caret-h") + map-get($dropdown, "space-xxs"));
+  right: calc(((map-get($dropdown, "caret-position-x") - 2px) + map-get($dropdown,"caret-w") / 2) * -1);
+
+  min-width: map-get($dropdown, "min-w");
+  max-width: map-get($dropdown, "max-w");
+
+  background-color: map-get($dropdown, "bg-c");
+  border-radius: map-get($dropdown, "border-r");
+  box-shadow: map-get($dropdown, "box-shadow");
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+
+    width: 0;
+    height: 0;
+  }
+
+  // Before is caret
+  &:before {
+    z-index: 2;
+    top: -10px;
+    right: map-get($dropdown, "caret-position-x");
+
+    width: 0;
+    height: 0;
+
+    border-style: solid;
+    border-width: 0 9px 10px 9px;
+    border-color: transparent transparent map-get($dropdown, "bg-c") transparent;
+  }
+
+  // Before is shadow under caret
+  &:after {
+    z-index: 1;
+    top: -13px;
+    right: calc(map-get($dropdown, "caret-position-x") - 3px);
+
+    border-style: solid;
+    border-width: 0 12px 13px 12px;
+    border-color: transparent transparent map-get($dropdown, "caret-shadow")
+      transparent;
+  }
+
+  &.is-hidden {
+    animation: dropdown-top-hide 0.25s ease-out forwards;
+  }
+
+  &.is-visible {
+    animation: dropdown-top-show 0.25s ease-out forwards;
+  }
+}
+
+/*
+  * --righ variant has to have - #{$space-sm} in its right gap evaluation
+  * because in .c-dots component there is paddgin $space-sm and then negative
+  * margin - $space-sm to move c-dots component. And --right variant of the
+  * dropdown would have bigger gap between dots and the left edge of 3dots
+*/
+.c-dropdown__content--right {
+  top: - math.div(map-get($dots, "height"), 2) - 1px;
+  right: calc(map-get($dropdown, "caret-h") + map-get($dropdown, "space-md") - map-get($dropdown, "space-sm"));
+  left: auto;
+
+  &.is-hidden {
+    animation: dropdown-right-hide 0.25s ease-out forwards;
+  }
+
+  &.is-visible {
+    animation: dropdown-right-show 0.25s ease-out forwards;
+  }
+
+  &:before {
+    top: map-get($dropdown, "caret-position-y");
+    right: -10px;
+
+    border-width: 9px 0 9px 10px;
+    border-color: transparent transparent transparent map-get($dropdown, "bg-c");
+  }
+
+  &:after {
+    top: calc(map-get($dropdown, "caret-position-y") - 3px);
+    right: -13px;
+    border-width: 12px 0 12px 13px;
+    border-color: transparent transparent transparent
+      map-get($dropdown, "caret-shadow");
+  }
+}
+
+.c-dropdown__content--bottom {
+  top: auto;
+  bottom: calc(100% + map-get($dropdown, "caret-h") + map-get($dropdown, "space-xxs"));
+
+  &.is-hidden {
+    animation: dropdown-bottom-hide 0.25s ease-out forwards;
+  }
+
+  &.is-visible {
+    animation: dropdown-bottom-show 0.25s ease-out forwards;
+  }
+
+  &:before {
+    top: auto;
+    bottom: -10px;
+    right: map-get($dropdown, "caret-position-x");
+
+    border-width: 10px 9px 0 9px;
+    border-color: map-get($dropdown, "bg-c") transparent transparent transparent;
+  }
+
+  &:after {
+    top: auto;
+    bottom: -13px;
+    right: calc(map-get($dropdown, "caret-position-x") - 3px);
+    border-width: 13px 12px 0 12px;
+    border-color: map-get($dropdown, "caret-shadow") transparent transparent
+      transparent;
+  }
+}
+
+.c-dropdown__content--left {
+  top: - math.div(map-get($dots, "height"), 2);
+  right: auto;
+  left: calc(
+    #{map-get($dropdown, "caret-h")} + #{map-get($dropdown, "space-md")}
+  );
+
+  &.is-hidden {
+    animation: dropdown-left-hide 0.25s ease-out forwards;
+  }
+
+  &.is-visible {
+    animation: dropdown-left-show 0.25s ease-out forwards;
+  }
+
+  &:before {
+    top: math.div(map-get($dots, "height"), 2);
+    left: -10px;
+
+    border-width: 9px 10px 9px 0;
+    border-color: transparent map-get($dropdown, "bg-c") transparent transparent;
+  }
+
+  &:after {
+    top: calc(math.div(map-get($dots, "height"), 2) - 3px);
+    left: -13px;
+    border-width: 12px 13px 12px 0;
+    border-color: transparent map-get($dropdown, "caret-shadow") transparent
+      transparent;
+  }
+}
+
+.c-dropdown__dots {
+  position: relative;
+  
+  display: flex;
+
+  align-items: center;
+
+  height: map-get($dots, "height");
+
+  padding-right: map-get($dots, "padding");
+  padding-left: map-get($dots, "padding");
+  margin-right: - map-get($dots, "padding");
+
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    .c-dots__dot,
+    .c-dots__dot:before,
+    .c-dots__dot:after {
+      background-color: map-get($dots, "hover-bg-c");
+    }
+  }
+}
+
+.c-dropdown__dot,
+.c-dropdown__dot:before,
+.c-dropdown__dot:after {
+  width: map-get($dots, "dot-w");
+  height: map-get($dots, "dot-h");
+
+  border-radius: 50%;
+
+  background-color: map-get($dots, "bg-c");
+
+  transition: background-color .18s linear;
+}
+
+.c-dropdown__dot {
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+
+    position: absolute;
+
+    display: block;
+  }
+
+  &:before {
+    top: -(calc(map-get($dots, "dot-h") + map-get($dots, "dot-gap")));
+  }
+
+  &:after {
+    bottom: -(calc(map-get($dots, "dot-h") + map-get($dots, "dot-gap")));
+  }
+}
+
+.c-dropdown__item {
+  border-bottom: 1px solid map-get($dropdown, "border-c");
+
+  &:last-child {
+    border-bottom: 0 none;
+  }
+}
+
+.c-dropdown__icon {
+  width: map-get($dropdown, "icon-w");
+
+  margin-right: map-get($dropdown, "space-xxs");
+
+  color: map-get($dropdown, "icon-c");
+}
+
+.c-dropdown__link {
+  display: flex;
+
+  align-items: center;
+
+  height: 100%;
+
+  padding: map-get($dropdown, "space-xs") map-get($dropdown, "space-nm");
+
+  color: map-get($dropdown, "text-c");
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: map-get($dropdown, "link-bg-c-hover");
+
+    color: map-get($dropdown, "link-text-c-hover");
+    text-decoration: none;
+
+    .c-dropdown__icon {
+      color: map-get($dropdown, "link-icon-c-hover");
+    }
+  }
+}
+
+@keyframes dropdown-top-show {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    visibility: visible;
+  }
+}
+
+@keyframes dropdown-top-hide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(80px);
+  }
+}
+
+@keyframes dropdown-right-show {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+    visibility: visible;
+  }
+}
+
+@keyframes dropdown-bottom-show {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    visibility: visible;
+  }
+}
+
+@keyframes dropdown-bottom-hide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-80px);
+  }
+}
+
+@keyframes dropdown-right-hide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-80px);
+  }
+}
+
+@keyframes dropdown-left-show {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+    visibility: visible;
+  }
+}
+
+@keyframes dropdown-left-hide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(80px);
+  }
+}

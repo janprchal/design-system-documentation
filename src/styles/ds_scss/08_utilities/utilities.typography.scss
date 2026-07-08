@@ -1,0 +1,162 @@
+.sr-only {
+  @include sr-only;
+}
+
+.cp {
+  cursor: pointer !important;
+}
+
+// Text aligns
+.tac {
+  text-align: center !important;
+}
+
+.tal {
+  text-align: left !important;
+}
+
+.tar {
+  text-align: right !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.capitalize {
+  text-transform: capitalize !important;
+}
+
+.noselect {
+  @include noselect;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.fsi {
+  font-style: italic !important;
+}
+
+.fs-xxs {
+  font-size: $text-xxs !important;
+}
+
+.fs-xs {
+  font-size: $text-xs !important;
+}
+
+.fs-sm {
+  font-size: $text-sm !important;
+}
+
+.fs-nm {
+  font-size: $text-nm !important;
+}
+
+.fs-md {
+  font-size: $text-md !important;
+}
+
+.fs-lg {
+  font-size: $text-lg !important;
+}
+
+.fs-xl {
+  font-size: $text-xl !important;
+}
+
+.fs-xxl {
+  font-size: $text-xxl !important;
+}
+
+.fs-xxxl {
+  font-size: $text-xxxl !important;
+}
+
+.fs-xxxxl {
+  font-size: $text-xxxxl !important;
+}
+
+// Fonts weights
+.fwet {
+  font-weight: 100 !important;
+}
+
+.fwt {
+  font-weight: 200 !important;
+}
+
+.fwl {
+  font-weight: 300 !important;
+}
+
+.fwn {
+  font-weight: 400 !important;
+}
+
+.fwm {
+  font-weight: 500 !important;
+}
+
+.fwsb {
+  font-weight: 600 !important;
+}
+
+.fwb {
+  font-weight: 700 !important;
+}
+
+.fweb {
+  font-weight: 900 !important;
+}
+
+// text colors
+.tc-normal {
+  color: $text-c !important;
+}
+
+.tc-lighter {
+  color: $text-c--lighter !important;
+}
+
+.tc-light {
+  color: $text-c--light !important;
+}
+
+.tc-lightest {
+  color: $text-c--lightest !important;
+}
+
+.tc-white {
+  color: $light-c !important;
+}
+
+.tc-black {
+  color: $dark-c !important;
+}
+
+.tc-negative {
+  color: $negative-c !important;
+}
+
+.tc-positive {
+  color: $positive-c !important;
+}
+
+.tc-primary {
+  color: $primary-c !important;
+}
+
+.tc-secondary {
+  color: $secondary-c !important;
+}
+
+.tc-tertiary {
+  color: $tertiary-c !important;
+}

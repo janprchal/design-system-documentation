@@ -1,0 +1,87 @@
+// text colors
+.tc-normal {
+  color: $text-c !important;
+}
+
+.tc-lighter {
+  color: $text-c--lighter !important;;
+}
+
+.tc-light {
+  color: $text-c--light !important;;
+}
+
+.tc-lightest {
+  color: $text-c--lightest !important;;
+}
+
+.tc-white {
+  color: $light-c !important;
+}
+
+.tc-black {
+  color: $dark-c !important;
+}
+
+.tc-negative {
+  color: $negative-c !important;
+}
+
+.tc-positive {
+  color: $positive-c !important;
+}
+
+.bg-light {
+  background-color: $light-c !important;
+}
+
+// Primary
+.bg-primary {
+  background-color: $primary-c !important;
+}
+
+.bg-primary--darker {
+  background-color: $primary-c--darker !important;
+}
+
+
+
+// Seconday
+.bg-secondary {
+  background-color: $secondary-c !important;
+}
+
+.bg-secondary--lighter {
+  background-color: $secondary-c--lighter !important;
+}
+
+.bg-secondary--darker {
+  background-color: $secondary-c--darker !important;
+}
+
+// tertiary
+.bg-tertiary {
+  background-color: $tertiary-c !important;
+}
+
+.bg-tertiary--darker {
+  background-color: $tertiary-c--darker !important;
+}
+
+// Positive
+.bg-positive {
+  background-color: $positive-c !important;
+}
+
+.bg-positive--darker {
+  background-color: $positive-c--darker !important;
+}
+
+// Negative
+.bg-negative {
+  background-color: $negative-c !important;
+}
+
+.bg-negative--darker {
+  background-color: $negative-c--darker !important;
+}

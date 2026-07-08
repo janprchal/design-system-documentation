@@ -1,0 +1,11 @@
+.header-ex__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+
+  padding: .625rem $wrapper-padding-x--sm;
+
+  @include wrapper;
+}

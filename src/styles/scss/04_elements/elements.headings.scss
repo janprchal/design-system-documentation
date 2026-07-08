@@ -1,0 +1,61 @@
+/*
+  Since this should might serve also as style guides for "classic" websites, 
+  is very convenient to have .h1(x) class, because sometimes you want to use h1
+  visual appearance for h4 heading (due to html structure and seo) and vice versa
+*/
+
+// @include typi-init; // runs typi (01_settings/settings.typography.scss)
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+
+  font-weight: 400;
+  color: $text-c--darker;
+  font-family: $font-headings;
+}
+
+h1,
+.h1 {
+  margin-bottom: $space-xxs;
+
+  font-size: $text-xxxl;
+  font-weight: 700;
+  line-height: $heading-line-height;
+}
+
+h2,
+.h2 {
+  margin-bottom: $space-xxs;
+
+  font-size: $text-xxl;
+  font-weight: 600;
+  line-height: $heading-line-height;
+}
+
+h3,
+.h3 {
+  margin-bottom: $space-xxs;
+
+  font-size: $text-xl;
+}
+
+h4,
+.h4 {
+  margin-bottom: $space-xxs;
+
+  font-size: $text-lg;
+}
+
+h5,
+.h5 {
+  margin-bottom: $space-xs;
+
+  font-size: $text-md;
+}
+
+h6,
+.h6 {
+  margin-bottom: $space-sm;
+
+  font-size: $text-sm;
+}

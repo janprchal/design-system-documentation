@@ -1,0 +1,5 @@
+Host master
+    HostName webs.enrian.com
+    Port 22
+    User design-enrian-dev
+    StrictHostKeyChecking no

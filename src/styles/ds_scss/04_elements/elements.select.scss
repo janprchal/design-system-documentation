@@ -1,0 +1,51 @@
+$select-arrow: url("data:image/svg+xml;utf8,<svg fill='black' height='8' viewBox='0 0 12 8' width='12' xmlns='http://www.w3.org/2000/svg'><polygon points='0 0, 12 0, 6 7' style='fill:000000'/></svg>");
+
+select {
+  @include placeholder {
+    color: $text-c--light;
+    font-weight: 400;
+  }
+  width: 100%;
+  height: $input-h;
+  padding: calc(#{$space-xxs} + 0.1rem) $space-sm $space-xxs;
+
+  background: $select-arrow no-repeat calc(100% - #{$space-sm}) calc(50% + 0.3rem) $block-bg-c;
+  border: $border-w solid $input-outline-c;
+  border-radius: $border-r;
+
+  color: $text-c;
+  font-weight: 400;
+  font-size: $text-nm;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:hover,
+  &:focus {
+    outline: 0 none;
+  }
+
+  &:hover {
+    border-color: $input-outline-c--hover;
+  }
+
+  &:focus {
+    border-color: $secondary-c;
+  }
+
+  &:disabled {
+    background-color: $neutral-c--light;
+    cursor: not-allowed;
+  }
+}
+
+select.has-error {
+  background-color: $negative-c--lightest;
+  border-color: $negative-c;
+
+  color: $negative-c--darker;
+
+  &:focus {
+    border-color: $negative-c--darker;
+  }
+}

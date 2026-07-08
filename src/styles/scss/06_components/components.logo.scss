@@ -1,0 +1,58 @@
+$logo: (
+  "padding": $space-xs $space-md 0,
+  "bg-c": $block-bg-c,
+  "height-m": 40px,
+  "height": $header-h,
+  "text-c": $text-c,
+  "text-s": $text-sm,
+  "collapsed-nav-w": $nav-max-w--collapsed,
+);
+
+.c-logo {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: map-get($logo, "height");
+  padding: map-get($logo, "padding");
+
+  background-color: map-get($logo, "bg-c");
+
+  text-decoration: none;
+}
+
+.c-logo__img {
+  height: map-get($logo, "height-m");
+
+  margin-right: 0.75rem;
+}
+
+.c-logo__name {
+  color: map-get($logo, "text-c");
+  font-family: $font-primary;
+  font-weight: 700;
+  font-size: map-get($logo, "text-s");
+  line-height: 1.3;
+
+  text-decoration: none;
+}
+
+.fluid-layout.nav-collapsed {
+  .c-logo {
+    @include mappy-query(screen) {
+      width: map-get($logo, "collapsed-w");
+    }
+  }
+
+  .c-logo__img {
+    @include mappy-query(screen) {
+      margin-right: 0;
+    }
+  }
+
+  .c-logo__name {
+    @include mappy-query(screen) {
+      display: none;
+    }
+  }
+}

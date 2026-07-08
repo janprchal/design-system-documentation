@@ -1,0 +1,156 @@
+.o-flex {
+  display: flex;
+}
+
+.o-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.o-start {
+  justify-content: flex-start;
+}
+
+.o-center {
+  justify-content: center;
+}
+
+.o-end {
+  justify-content: flex-end;
+}
+
+.o-between {
+  justify-content: space-between;
+}
+
+.o-top {
+  align-items: flex-start;
+}
+
+.o-middle {
+  align-items: center;
+}
+
+.o-bottom {
+  align-items: flex-end;
+}
+
+@include mappy-query(mobile) {
+  .o-start-sm {
+    justify-content: flex-start;
+  }
+
+  .o-center-sm {
+    justify-content: center;
+  }
+
+  .o-end-sm {
+    justify-content: flex-end;
+  }
+
+  .o-between-sm {
+    justify-content: space-between;
+  }
+
+  .o-top-sm {
+    align-items: flex-start; 
+  }
+
+  .o-middle-sm {
+    align-items: center; 
+  }
+
+  .o-bottom-sm {
+    align-items: flex-end; 
+  }
+}
+
+@include mappy-query(tablet) {
+  .o-start-md {
+    justify-content: flex-start;
+  }
+
+  .o-center-md {
+    justify-content: center;
+  }
+
+  .o-end-md {
+    justify-content: flex-end;
+  }
+
+  .o-between-md {
+    justify-content: space-between;
+  }
+
+  .o-top-md {
+    align-items: flex-start; 
+  }
+
+  .o-middle-md {
+    align-items: center; 
+  }
+
+  .o-bottom-md {
+    align-items: flex-end; 
+  }
+}
+
+@include mappy-query(screen) {
+  .o-start-lg {
+    justify-content: flex-start;
+  }
+
+  .o-center-lg {
+    justify-content: center;
+  }
+
+  .o-end-lg {
+    justify-content: flex-end;
+  }
+
+  .o-between-lg {
+    justify-content: space-between;
+  }
+
+  .o-top-lg {
+    align-items: flex-start; 
+  }
+
+  .o-middle-lg {
+    align-items: center; 
+  }
+
+  .o-bottom-lg {
+    align-items: flex-end; 
+  }
+}
+
+@include mappy-query(largescreen) {
+  .o-start-xl {
+    justify-content: flex-start;
+  }
+
+  .o-center-xl {
+    justify-content: center;
+  }
+
+  .o-end-xl {
+    justify-content: flex-end;
+  }
+
+  .o-between-xl {
+    justify-content: space-between;
+  }
+
+  .o-top-xl {
+    align-items: flex-start; 
+  }
+
+  .o-middle-xl {
+    align-items: center; 
+  }
+
+  .o-bottom-xl {
+    align-items: flex-end; 
+  }
+}

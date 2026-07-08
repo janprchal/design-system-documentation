@@ -1,0 +1,136 @@
+$input: (
+  "height": $input-h,
+  "border-w": $border-w,
+
+  "bg-c": $neutral-c,
+  
+  "border-c": $input-outline-c,
+  "border-secondary-c": $secondary-c,
+  "border-negative-c": $negative-c,
+  "border-r": $border-r,
+
+  "icon-bg-negative": $negative-c,
+  "input-bg-negative": $negative-c--lightest,
+  "placeholer-c-negative": $negative-c--light,
+
+  "space-xs": $space-xs,
+
+  "text-c": $text-c,
+  "text-s": $text-nm,
+  "text-s-small": $text-xs,
+);
+
+.c-icon-input {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.c-icon-input__input {
+  position: relative;
+  flex: 1 1 auto;
+
+  width: 100%;
+  padding-right: calc(map-get($input, "height") + map-get($input, "space-xs"));
+
+  font-size: map-get($input, "text-s");
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.c-icon-input__icon {
+  position: absolute;
+  top: map-get($input, "border-w");
+  right: map-get($input, "border-w");
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: map-get($input, "height");
+  height: calc(map-get($input, "height") - (map-get($input, "border-w") * 2));
+  padding-right: map-get($input, "space-xs");
+  padding-left: map-get($input, "space-xs");
+
+  background-color: map-get($input, "bg-c");
+  border-width: 0 0 0 map-get($input, "border-w");
+  border-style: solid;
+  border-color: map-get($input, "border-c");
+  border-radius: 0 map-get($input, "border-r") map-get($input, "border-r") 0;
+
+  color: map-get($input, "text-c");
+  font-weight: 700;
+  font-size: map-get($input, "text-s-small");
+  text-align: center;
+}
+
+/*
+  It has .c-icon-input__icon + .c-icon-input__icon to change
+  border color for `--both-sides` modifier
+*/
+.c-icon-input__input:focus + .c-icon-input__icon,
+.c-icon-input__input:focus + .c-icon-input__icon + .c-icon-input__icon {
+  border-color: map-get($input, "secondary-c");
+}
+
+.has-error {
+  .c-icon-input__input {
+    @include placeholder {
+      color: map-get($input, "placeholder-negative-c");
+    }
+
+    background-color: map-get($input, "input-bg-negative");
+    border-color: map-get($input, "border-negative-c");
+  }
+
+  .c-icon-input__input + .c-icon-input__icon,
+  .c-icon-input__input + .c-icon-input__icon + .c-icon-input__icon {
+    border-color: transparent;
+    background-color: map-get($input, "icon-bg-negative");
+  }
+}
+
+.c-icon-input--icon-left {
+  .c-icon-input__input {
+    position: relative;
+    flex: 1 1 auto;
+
+    width: 100%;
+    padding-right: map-get($input, "space-xs");
+    padding-left: calc(map-get($input, "height") + map-get($input, "space-xs"));
+  }
+
+  .c-icon-input__icon {
+    right: auto;
+    left: map-get($input, "border-w");
+
+    border-right-width: map-get($input, "border-w");
+    border-left-width: 0;
+    border-radius: map-get($input, "border-r") 0 0 map-get($input, "border-r");
+  }
+}
+
+.c-icon-input--both-sides {
+  .c-icon-input__input {
+    padding-left: calc(map-get($input, "height") + map-get($input, "space-xs"));
+  }
+
+  .c-icon-input__icon:first-of-type {
+    right: auto;
+    left: map-get($input, "border-w");
+
+    border-right-width: map-get($input, "border-w");
+    border-left-width: 0;
+    border-radius: map-get($input, "border-r") 0 0 map-get($input, "border-r");
+  }
+
+  .c-icon-input__icon:last-of-type {
+    right: map-get($input, "border-w");
+    left: auto;
+
+    border-left-width: 1px;
+    border-radius: 0 map-get($input, "border-r") map-get($input, "border-r") 0;
+  }
+}

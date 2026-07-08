@@ -1,0 +1,46 @@
+@use "sass:math";
+
+.o-row {
+  @include row();
+}
+
+// All cols
+[class*="o-col-"] {
+  @include mappy-query(tablet) {
+    padding-right: math.div($col-padding-x--md, 2);
+    padding-left: math.div($col-padding-x--md, 2);
+  }
+
+  @include mappy-query(screen) {
+    padding-right: math.div($col-padding-x--lg, 2);
+    padding-left: math.div($col-padding-x--lg, 2);
+  }
+
+  @include mappy-query(largescreen) {
+    padding-right: math.div($col-padding-x--xl, 2);
+    padding-left: math.div($col-padding-x--xl, 2);
+  }
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  padding-right: math.div($col-padding-x--sm, 2);
+  padding-left: math.div($col-padding-x--sm, 2);
+}
+
+// Row nested in column should not have negative margins
+// and should be 100% width
+[class*="o-col-"] > .o-row {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.o-row--no-gaps {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+
+  [class*="o-col-"] {
+    padding: 0;
+  }
+}

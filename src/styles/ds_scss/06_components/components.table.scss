@@ -1,0 +1,269 @@
+$table: (
+  "border-r": $border-r--bigger,
+  "box-shadow": $block-box-shadow,
+
+  "icon-padding": $space-xxs $space-xs,
+  "icon-c": $secondary-c,
+  "icon-c-hover": $secondary-c--darker,
+
+  "icon-c-negative": $negative-c,
+  "icon-c-negative-hover": $negative-c--darker,
+
+  "icon-c-positive": $positive-c,
+  "icon-c-positive-hover": $positive-c--darker,
+
+  "icon-c-cancel": $text-c--light,
+  "icon-c-cancel-hover": $text-c--lighter,
+);
+
+// table component
+.c-table {
+}
+
+.c-table--separate {
+  box-shadow: map-get($table, "box-shadow");
+
+  thead tr:first-child {
+    td:first-child {
+      border-radius: map-get($table, "border-r") 0 0 0;
+    }
+
+    td:last-child {
+      border-radius: 0 map-get($table, "border-r") 0 0;
+    }
+  }
+
+  tbody tr:last-child {
+    td:first-child {
+      border-radius: 0 0 0 map-get($table, "border-r");
+    }
+
+    td:last-child {
+      border-radius: 0 0 map-get($table, "border-r") 0;
+    }
+  }
+}
+
+// table with a sticky header
+.c-table--sticky-header {
+  thead tr th {
+    @include mappy-query(screen) {
+      top: $header-h; // height of element "o-header__inner"
+    }
+    position: sticky;
+    top: $header-h--mobile; // height of element "o-header__inner" on mobile BP
+
+    background-color: $block-bg-c;
+    border-bottom: 0.1rem solid $outline-c;
+
+    &:first-child {
+      border-radius: map-get($table, "border-r") 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 map-get($table, "border-r") 0 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.1rem;
+      left: 0;
+
+      width: 100%;
+      height: 0.1rem;
+
+      background-color: $outline-c;
+    }
+  }
+}
+
+// table with sticky left column
+.c-table--sticky-left {
+  overflow: auto;
+
+  thead th:first-child {
+    position: sticky;
+    left: 0;
+
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  tbody th:first-child {
+    position: sticky;
+    left: 0;
+
+    background-color: $block-bg-c;
+  }
+}
+
+// table with sticky right column
+.c-table--sticky-right {
+  overflow: auto;
+
+  thead th:last-child {
+    position: sticky;
+    right: 0;
+
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+
+  tbody th:last-child {
+    position: sticky;
+    right: 0;
+
+    background-color: $block-bg-c;
+  }
+}
+
+// table component in box component
+.c-table--last-row-radius {
+  tbody tr:last-child {
+    td:first-child {
+      border-radius: 0 0 0 map-get($table, "border-r");
+    }
+
+    td:last-child {
+      border-radius: 0 0 map-get($table, "border-r") 0;
+    }
+  }
+}
+
+// Hidden cell
+.c-table__hidden {
+  opacity: 0;
+}
+
+// Hidden cell is shown on hover
+.c-table tr:hover .c-table__hidden {
+  opacity: 1;
+}
+
+// col width
+.c-table__cols-1 {
+  @include cols(1);
+}
+
+.c-table__cols-2 {
+  @include cols(2);
+}
+
+.c-table__cols-3 {
+  @include cols(3);
+}
+
+.c-table__cols-4 {
+  @include cols(4);
+}
+
+.c-table__cols-5 {
+  @include cols(5);
+}
+
+.c-table__cols-6 {
+  @include cols(6);
+}
+
+.c-table__cols-7 {
+  @include cols(7);
+}
+
+.c-table__cols-8 {
+  @include cols(8);
+}
+
+.c-table__cols-9 {
+  @include cols(9);
+}
+
+.c-table__cols-10 {
+  @include cols(10);
+}
+
+.c-table__cols-11 {
+  @include cols(11);
+}
+
+.c-table__cols-12 {
+  @include cols(12);
+}
+
+$percent: 5;
+$symbol: "%";
+
+@while $percent < 100 {
+  .c-table__w-#{$percent} {
+    width: #{$percent}#{$symbol};
+  }
+
+  $percent: $percent + 5;
+}
+
+// icons - patent/wrapper of "icon"
+.c-table__icons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-table__icon {
+  padding: map-get($table, "icon-padding");
+
+  color: map-get($table, "icon-c");
+
+  cursor: pointer;
+
+  transition: color 0.24s linear;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: map-get($table, "icon-c-hover");
+  }
+}
+
+.c-table__icon--negative {
+  color: map-get($table, "icon-c-negative");
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: map-get($table, "icon-c-negative-hover");
+  }
+}
+
+.c-table__icon--positive {
+  color: map-get($table, "icon-c-positive");
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: map-get($table, "icon-c-positive-hover");
+  }
+}
+
+.c-table__icon--cancel {
+  color: map-get($table, "icon-c-cancel");
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: map-get($table, "icon-c-cancel-hover");
+  }
+}

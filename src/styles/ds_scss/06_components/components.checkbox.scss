@@ -1,0 +1,170 @@
+$checkbox: (
+  "height": 2.2rem,
+  "width": 2.2rem,
+
+  "border-w": 0.2rem,
+  "border-r": $border-r,
+
+  "checkbox-icon-w": 1.4rem,
+  "checkbox-icon-h": 0.8rem,
+
+  "color-outline": $input-outline-c,
+  "color-hover": $input-outline-c--hover,
+
+  "indicator-bg": $input-outline-c,
+  "indicator-gap": 1.2rem,
+  "indicator-bg-active": $positive-c,
+
+  // Disabled state
+  "indicator-bg-disabled": $neutral-c--light,
+  "indicator-border-c-disabled": $neutral-c--light,
+
+  // Checked & disabled state
+  "indicator-bg-disabled-active": $positive-c--light,
+  "indicator-border-c-disabled-active": $positive-c--light,
+
+  // Error state
+  "indicator-bg-error": $negative-c,
+  "indicator-border-c-error": $negative-c,
+
+  "text-c": $text-c,
+  "text-nm": $text-nm,
+  "text-c-light": $text-c--light,
+);
+
+.c-checkbox {
+  position: relative;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.c-checkbox__input {
+  position: absolute;
+  z-index: -1;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+}
+
+.c-checkbox__label {
+  display: inline-flex;
+  flex-flow: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  color: map-get($checkbox, "text-c");
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+.c-checkbox__text {
+  position: relative;
+  flex: 1 0 auto;
+
+  padding-top: 0.1rem;
+
+  color: map-get($checkbox, "text-c");
+  font-size: map-get($checkbox, "text-nm");
+  line-height: 1.58;
+}
+
+.c-checkbox__label--center {
+  justify-content: center;
+}
+
+.c-checkbox__indicator {
+  position: relative;
+  top: map-get($checkbox, "border-w");
+
+  width: map-get($checkbox, "width");
+  height: map-get($checkbox, "height");
+  margin-right: map-get($checkbox, "indicator-gap");
+
+  background-color: map-get($checkbox, "indicator-bg");
+  border: map-get($checkbox, "border-w") solid
+    map-get($checkbox, "color-outline");
+  border-radius: map-get($checkbox, "border-r");
+
+  transition: all 0.12s linear;
+}
+
+.c-checkbox__indicator:before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: 0.2rem;
+  display: none;
+
+  width: map-get($checkbox, "checkbox-icon-w");
+  height: map-get($checkbox, "checkbox-icon-h");
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-width: 0 0 map-get($checkbox, "border-w")
+    map-get($checkbox, "border-w");
+  border-style: solid;
+  border-color: $light-c;
+
+  transform: rotate(-50deg);
+}
+
+// hover on label (checkbox)
+// Focus on original input (through tabindex)
+.c-checkbox__label:hover .c-checkbox__indicator,
+.c-checkbox__input:focus + .c-checkbox__indicator {
+  background-color: map-get($checkbox, "color-hover");
+  border-color: map-get($checkbox, "color-hover");
+}
+
+.c-checkbox__input:checked + .c-checkbox__indicator {
+  background-color: map-get($checkbox, "indicator-bg-active");
+  border-color: map-get($checkbox, "indicator-bg-active");
+}
+
+.c-checkbox__input:checked + .c-checkbox__indicator:before {
+  display: block;
+}
+
+// Disabled state
+.c-checkbox.is-disabled {
+  .c-checkbox__label {
+    cursor: not-allowed;
+  }
+
+  .c-checkbox__text {
+    color: map-get($checkbox, "text-c-light");
+  }
+
+  .c-checkbox__input + .c-checkbox__indicator {
+    background-color: map-get($checkbox, "indicator-bg-disabled");
+    border-color: map-get($checkbox, "indicator-border-c-disabled");
+  }
+
+  // Checked state
+  .c-checkbox__input:checked + .c-checkbox__indicator {
+    background-color: map-get($checkbox, "indicator-bg-disabled-active");
+    border-color: map-get($checkbox, "indicator-border-c-disabled-active");
+  }
+}
+
+.c-checkbox--text-left {
+  .c-checkbox__label {
+    flex-flow: row;
+  }
+
+  .c-checkbox__indicator {
+    margin-right: 0;
+    margin-left: map-get($checkbox, "indicator-gap");
+  }
+}
+
+.c-checkbox.has-error {
+  .c-checkbox__indicator {
+    background-color: map-get($checkbox, "indicator-bg-error");
+    border-color: map-get($checkbox, "indicator-border-c-error");
+  }
+}

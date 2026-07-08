@@ -1,0 +1,55 @@
+$drawer: (
+  "z-index": $drawer-z,
+  "width": 38rem,
+  "padding-y": $space-md,
+  "padding-x": $space-md,
+
+  "bg-c": $light-c,
+  "border-c": $outline-c,
+  "box-shadow": -0.2rem 0 2rem 0 rgba(#d0d8e0, 0.57),
+  "close-gap": $space-nm,
+  "heading-gap": $space-nm,
+);
+
+.c-drawer {
+  @include mappy-query(tablet) {
+    width: map-get($drawer, "width");
+  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: map-get($drawer, "z-index");
+
+  width: 100%;
+  height: 100%;
+  padding-top: map-get($drawer, "padding-y");
+  padding-bottom: map-get($drawer, "padding-y");
+
+  background-color: map-get($drawer, "bg-c");
+  border-left: 0.1rem solid map-get($drawer, "border-c");
+
+  transition: transform 0.37s ease-out;
+  transform: translateX(100%);
+  box-shadow: map-get($drawer, "box-shadow");
+}
+
+.c-drawer.is-open {
+  transform: translateX(0);
+}
+
+.c-drawer__inner {
+  padding-right: map-get($drawer, "padding-x");
+  padding-left: map-get($drawer, "padding-x");
+}
+
+.c-drawer__close {
+  display: inline-block;
+
+  margin-bottom: map-get($drawer, "close-gap");
+
+  cursor: pointer;
+}
+
+.c-drawer__heading {
+  margin-bottom: map-get($drawer, "heading-gap");
+}

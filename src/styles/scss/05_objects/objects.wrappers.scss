@@ -1,0 +1,119 @@
+.o-wrapper {
+  max-width: 100%;
+  overflow-x: hidden;
+
+  @include mappy-query(tablet) {
+    overflow-x: visible;
+  }
+
+  @include wrapper;
+}
+
+.o-wrapper__nav {
+  @include mappy-query(screen) {
+    flex: 0 0 $nav-max-w;
+    max-width: $nav-max-w;
+  }
+}
+
+.o-wrapper__content {
+  padding-top: calc(#{$space-nm} + #{$header-h});
+  padding-bottom: $space-nm;
+}
+
+.o-wrapper__content--without-header {
+  padding-top: $space-xl;
+}
+
+.fluid-layout {
+  .o-wrapper {
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .o-wrapper__content {
+    padding-bottom: 0;
+
+    @include mappy-query(screen) {
+      padding-top: 0;
+      padding-left: $nav-max-w;
+    }
+  }
+  
+  // button for callapsing left side navigation
+  .o-wrapper__nav__collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .fas {
+      opacity: 0;
+      color: $light-c;
+    }
+
+    @include mappy-query(screen) {
+      position: fixed;
+      z-index: 9;
+      bottom: 0;
+      left: $nav-max-w;
+
+      width: 60px;
+      height: 60px;
+
+      overflow: hidden;
+
+      background-color: $secondary-c;
+
+      transform: scaleX(.2);
+      transform-origin: 0 50%;
+      transition: transform .18s linear;
+
+      cursor: pointer;
+
+      &:hover,
+      &:active {
+        transform: scaleX(1);
+
+        .fas {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.fluid-layout.nav-collapsed {
+  .o-wrapper__content {
+    @include mappy-query(screen) {
+      padding-left: calc(#{$nav-max-w--collapsed} + #{$wrapper-padding-x--lg});
+    }
+  }
+
+  .o-wrapper__nav {
+    @include mappy-query(screen) {
+      flex-basis: $nav-max-w--collapsed;
+      max-width: $nav-max-w--collapsed;
+    }
+  }
+
+  .o-wrapper__nav__collapse {
+    .fas {
+      transform: rotate(180deg);
+    }
+
+    @include mappy-query(screen) {
+      left: $nav-max-w--collapsed;
+    }
+  }
+}
+
+.fluid-layout.fluid-layout--inline-nav {
+  .o-wrapper__content {
+    padding-left: $wrapper-padding-x--sm;
+
+    @include mappy-query(screen) {
+      padding-left: $wrapper-padding-x--lg;
+    }
+  }
+}

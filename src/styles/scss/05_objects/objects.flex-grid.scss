@@ -1,0 +1,75 @@
+@use "sass:math";
+
+.o-row {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  width: calc(100% + #{$col-padding-x--sm});
+
+  margin-left: math.div($col-padding-x--sm, 2) * -1;
+  margin-right: math.div($col-padding-x--sm, 2) * -1;
+
+  @include mappy-query(tablet) {
+    width: calc(100% + #{$col-padding-x--md});
+
+    margin-left: math.div($col-padding-x--md, 2) * -1;
+    margin-right: math.div($col-padding-x--md, 2) * -1;
+  }
+
+  @include mappy-query(screen) {
+    width: calc(100% + #{$col-padding-x--lg});
+
+    margin-left: math.div($col-padding-x--lg, 2) * -1;
+    margin-right: math.div($col-padding-x--lg, 2) * -1;
+  }
+
+  @include mappy-query(largescreen) {
+    width: calc(100% + #{$col-padding-x--xl});
+
+    margin-left: math.div($col-padding-x--xl, 2) * -1;
+    margin-right: math.div($col-padding-x--xl, 2) * -1;
+  }
+}
+
+// All cols
+[class*="o-col-"] {
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  padding-right: math.div($col-padding-x--sm, 2);
+  padding-left: math.div($col-padding-x--sm, 2);
+
+  @include mappy-query(tablet) {
+    padding-right: math.div($col-padding-x--md, 2);
+    padding-left: math.div($col-padding-x--md, 2);
+  }
+
+  @include mappy-query(screen) {
+    padding-right: math.div($col-padding-x--lg, 2);
+    padding-left: math.div($col-padding-x--lg, 2);
+  }
+
+  @include mappy-query(largescreen) {
+    padding-right: math.div($col-padding-x--xl, 2);
+    padding-left: math.div($col-padding-x--xl, 2);
+  }
+}
+
+// Row nested in column should not have negative margins
+// and should be 100% width
+[class*="o-col-"] > .o-row {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.o-row--no-gaps {
+  margin-right: 0;
+  margin-left: 0;
+  width: 100%;
+
+  [class*="o-col-"] {
+    padding: 0;
+  }
+}

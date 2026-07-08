@@ -1,0 +1,26 @@
+a {
+  display: inline-block;
+
+  color: $tertiary-c;
+  font-family: $font-mono;
+  text-decoration: underline;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $tertiary-c--darker;
+    text-decoration: none;
+  }
+}
+
+a[target*="blank"] {
+  padding-right: 4px;
+
+  &::after {
+    content: "\2197";
+    display: inline-block;
+    margin-left: $space-xxs;
+  }
+}

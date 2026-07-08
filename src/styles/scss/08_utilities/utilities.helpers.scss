@@ -1,0 +1,240 @@
+@include margin($gaps-stop);
+@include padding($gaps-stop);
+
+.sr-only {
+  @include sr-only;
+}
+
+.pr {
+  position: relative !important;
+}
+
+.db {
+  display: block !important;
+}
+
+.dib {
+  display: inline-block !important;
+}
+
+.cp {
+  cursor: pointer !important;
+}
+
+// Text aligns
+.tac {
+  text-align: center !important;
+}
+
+.tal {
+  text-align: left !important;
+}
+
+.tar {
+  text-align: right !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.noselect {
+  @include noselect;
+}
+
+.tu {
+  text-decoration: underline !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none !important;
+  }
+}
+
+.fs-xxs {
+  font-size: $text-xxs !important;
+}
+
+.fs-xs {
+  font-size: $text-xs !important;
+}
+
+.fs-sm {
+  font-size: $text-sm !important;
+}
+
+.fs-nm {
+  font-size: $text-nm !important;
+}
+
+.fs-md {
+  font-size: $text-md !important;
+}
+
+.fs-lg {
+  font-size: $text-lg !important;
+}
+
+.fs-xl {
+  font-size: $text-xl !important;
+}
+
+.fs-xxl {
+  font-size: $text-xxl !important;
+}
+
+.fs-xxxl {
+  font-size: $text-xxxl !important;
+}
+
+.fs-xxxxl {
+  font-size: $text-xxxxl !important;
+}
+
+// Fonts weights
+.fwt {
+  font-weight: 200 !important;
+}
+
+.fwl {
+  font-weight: 300 !important;
+}
+
+.fwn {
+  font-weight: 400 !important;
+}
+
+.fwm {
+  font-weight: 500 !important;
+}
+
+.fwsb {
+  font-weight: 600 !important;
+}
+
+.fwb {
+  font-weight: 700 !important;
+}
+
+.ff-mono {
+  font-family: $font-mono;
+  font-size: 1.7rem;
+}
+
+.fsi {
+  font-style: italic;
+}
+
+// Misc
+.no-border {
+  border: 0 none !important;
+}
+
+.full-h {
+  height: 100%;
+}
+
+.full-w {
+  width: 100%;
+}
+
+.mobile-only {
+  display: block;
+
+  @include mappy-query(tablet) {
+    display: none;
+  }
+}
+
+.mobile-only--flex {
+  display: flex;
+
+  @include mappy-query(tablet) {
+    display: none;
+  }
+}
+
+.tablet-only {
+  display: none;
+
+  @include mappy-query(tablet-only) {
+    display: block;
+  }
+}
+
+.tablet-only--flex {
+  display: none;
+
+  @include mappy-query(tablet-only) {
+    display: flex;
+  }
+}
+
+.tablet-and-more {
+  display: none;
+
+  @include mappy-query(tablet) {
+    display: block;
+  }
+}
+
+.tablet-and-more--flex {
+  display: none;
+
+  @include mappy-query(tablet) {
+    display: flex;
+  }
+}
+
+.screen-only {
+  display: none;
+
+  @include mappy-query(screen-only) {
+    display: block;
+  }
+}
+
+.screen-only--flex {
+  display: none;
+
+  @include mappy-query(screen-only) {
+    display: flex;
+  }
+}
+
+.screen-and-more {
+  display: none;
+
+  @include mappy-query(screen) {
+    display: block;
+  }
+}
+
+.screen-and-more--flex {
+  display: none;
+
+  @include mappy-query(screen) {
+    display: flex;
+  }
+}
+
+.largescreen-and-more {
+  display: none;
+
+  @include mappy-query(largescreen) {
+    display: block;
+  }
+}
+
+.largescreen-and-more--flex {
+  display: none;
+
+  @include mappy-query(largescreen) {
+    display: flex;
+  }
+}

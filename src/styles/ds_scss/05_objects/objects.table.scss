@@ -1,0 +1,32 @@
+.o-table {
+}
+
+.o-table__header,
+.o-table__footer {
+  padding: $space-md $space-md;
+}
+
+.o-table__header {
+  border-bottom: 0.1rem solid $outline-c;
+}
+
+.o-table__table {
+}
+
+.o-table__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.o-table__lines {
+  flex: 0 1 auto;
+
+  min-width: 20rem;
+}
+
+.o-table__pagination {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+}

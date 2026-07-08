@@ -1,0 +1,42 @@
+$avatar: (
+  "image-gap": $space-sm,
+  "caret-c": $nav-link-c,
+
+  "text-s": $text-sm,
+  "text-c": $text-c--lighter,
+);
+
+.c-avatar {
+  display: flex;
+  align-items: center;
+
+  user-select: none;
+}
+
+.c-avatar__name {
+  color: map-get($avatar, "text-c");
+  font-weight: 500;
+  font-size: map-get($avatar, "text-s");
+}
+
+.c-avatar__img {
+  overflow: hidden;
+
+  width: 4rem;
+  margin-right: map-get($avatar, "image-gap");
+  margin-left: map-get($avatar, "image-gap");
+
+  border-radius: 50%;
+}
+
+.c-avatar__img {
+}
+
+.c-avatar__caret {
+  width: 0;
+  height: 0;
+
+  border-width: 0.7rem 0.6rem 0 0.6rem;
+  border-style: solid;
+  border-color: map-get($avatar, "caret-c") transparent transparent transparent;
+}

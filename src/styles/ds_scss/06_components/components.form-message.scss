@@ -1,0 +1,60 @@
+$form-message: (
+  "margin-x": $space-xxs,
+  "margin-y": $space-xxs,
+
+  "icon-s": $text-md,
+  "icon-c": $secondary-c,
+
+  "text-s": $text-sm,
+  "text-c": $text-c--light,
+
+  "error-c": $negative-c,
+  "success-c": $positive-c,
+);
+
+.c-form-message {
+  display: flex;
+
+  margin-top: map-get($form-message, "margin-y");
+
+  font-weight: 400;
+  font-style: italic;
+}
+
+.c-form-message__icon {
+  margin-right: map-get($form-message, "margin-x");
+
+  color: map-get($form-message, "icon-c");
+  font-size: map-get($form-message, "icon-s");
+  line-height: 1;
+}
+
+.c-form-message__text {
+  padding-top: 0.1rem;
+
+  color: map-get($form-message, "text-c");
+  font-weight: 400;
+  font-size: map-get($form-message, "text-s");
+  line-height: 1.28;
+  letter-spacing: 0.08rem;
+}
+
+// Error state of validation message
+.c-form-message.has-error {
+  color: map-get($form-message, "error-c");
+
+  .c-form-message__icon,
+  .c-form-message__text {
+    color: map-get($form-message, "error-c");
+  }
+}
+
+// Valid state of validation message
+.c-form-message.has-success {
+  color: map-get($form-message, "success-c");
+  
+  .c-form-message__icon,
+  .c-form-message__text {
+    color: map-get($form-message, "success-c");
+  }
+}
