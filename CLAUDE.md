@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A Vue 3 + TypeScript site that documents a CSS/HTML design system (Enrian Partners). It is a documentation *application* — every page both explains a design-system component/utility and renders a live, isolated example of it. There is no build output of the design system as a separate package; the design system's SCSS lives inside this same app under `src/styles/ds_scss`.
+A Vue 3 + TypeScript site that documents a CSS/HTML design system. It is a documentation *application* — every page both explains a design-system component/utility and renders a live, isolated example of it. There is no build output of the design system as a separate package; the design system's SCSS lives inside this same app under `src/styles/ds_scss`.
 
 ## Commands
 

@@ -418,7 +418,7 @@
                     label="Email"
                     placeholder="Add you email..."
                     type="email"
-                    value="joey.ramone@enrian.com"
+                    value="joey.ramone@example.com"
                     special-class="has-success"
                     :message-show="true"
                     message-text="Email looks good"

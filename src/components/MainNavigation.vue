@@ -5,7 +5,7 @@
         <img
           class="c-logo__img"
           src="@/assets/logo.svg"
-          alt="Enrian Partners a.s. logo"
+          alt="Design System logo"
         />
         <span class="c-logo__name">Design System <br />Tutorial</span>
       </router-link>

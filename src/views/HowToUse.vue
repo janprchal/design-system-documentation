@@ -153,9 +153,9 @@
             </header>
 
             <p>
-              If you're going to build project for client or other app for
-              enrian and you want to use DS, getting source SCSS (and maybe JS)
-              will be best way for you.
+              If you're going to build project for a client or other app and you
+              want to use DS, getting source SCSS (and maybe JS) will be best
+              way for you.
             </p>
 
             <p>
@@ -169,7 +169,9 @@
               <span class="ff-mono">font-sizes</span>,
               <span class="ff-mono">layout</span> options which you can change
               to fit needs of your project.<br />
-              <a href="https://cdn.enrian.com/design_system/scss.zip" download
+              <a
+                href="https://cdn.your-domain.com/design_system/scss.zip"
+                download
                 >Download SCSS
               </a>
             </p>
@@ -177,7 +179,9 @@
             <p>
               Some <span class="ff-mono">Components</span> needs Javascript to
               work properly. <br />
-              <a href="https://cdn.enrian.com/design_system/js.zip" download
+              <a
+                href="https://cdn.your-domain.com/design_system/js.zip"
+                download
                 >Download JS
               </a>
             </p>
@@ -198,7 +202,7 @@
               If you want to start discover what can you do with DS, best way
               will be to download simple
               <a
-                href="https://cdn.enrian.com/design_system/ds-boilerplate.zip"
+                href="https://cdn.your-domain.com/design_system/ds-boilerplate.zip"
                 download
                 >Starting Kit</a
               >, just unzip this kit and open
